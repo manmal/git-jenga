@@ -1,6 +1,6 @@
 # git-jenga restacking plan
 version: 1
-generated: "2025-12-22T19:31:30Z"
+generated: "2025-12-22T19:31:31Z"
 repository: "/Users/manuelmaly/Dev/ai/git-jenga"
 
 # STRICT VALIDATION
@@ -11,8 +11,8 @@ errors:
 
 # Source state snapshot
 source:
-  head_branch: "feature/TEST-2-conflict"
-  head_commit: "28c30798b3374074014b8f03024202b9e0a3e4ce"
+  head_branch: "feature/TEST-2-ui"
+  head_commit: "bdb06b32246180dadf6abb8d17c6dca946545120"
   base_branch: "develop"
   base_commit: "310e6de010477a0f547e6115ab1ca9d1d65f1c07"
 
@@ -53,9 +53,34 @@ stack:
     needs_fix: false
     step_status: pending
 
-  - branch: "feature/TEST-2-conflict"
-    commit: "28c30798b3374074014b8f03024202b9e0a3e4ce"
+  - branch: "feature/TEST-1-api"
+    commit: "c8fe7a4ba20e34ff4d86314765bd1afa21bf8769"
     parent_branch: "feature/TEST-1-conflict"
+    commits_from_parent: 3
+    needs_fix: true
+    step_status: pending
+    fix:
+      commit_message: |
+        fix: Apply changes
+        
+        Jira: TEST
+      files:
+        - path: "api.txt"
+          change_type: modified
+          staged: false
+          diff: |
+            diff --git a/api.txt b/api.txt
+            index 25275c7..14f0c68 100644
+            --- a/api.txt
+            +++ b/api.txt
+            @@ -1 +1,2 @@
+             API
+            +Modified API
+            
+
+  - branch: "feature/TEST-2-ui"
+    commit: "bdb06b32246180dadf6abb8d17c6dca946545120"
+    parent_branch: "feature/TEST-1-api"
     commits_from_parent: 1
     needs_fix: true
     step_status: pending
@@ -65,18 +90,16 @@ stack:
         
         Jira: TEST
       files:
-        - path: "file.txt"
+        - path: "ui.txt"
           change_type: modified
           staged: false
           diff: |
-            diff --git a/file.txt b/file.txt
-            index 40cedd5..698e08f 100644
-            --- a/file.txt
-            +++ b/file.txt
-            @@ -1,3 +1,4 @@
-             Line 1
-             Line 2 from branch 1
-             Line 3 from branch 2
-            +Extra line
+            diff --git a/ui.txt b/ui.txt
+            index 8bc4269..d5bb4b7 100644
+            --- a/ui.txt
+            +++ b/ui.txt
+            @@ -1 +1,2 @@
+             UI
+            +Modified UI
             
 
