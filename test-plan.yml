@@ -7,16 +7,39 @@ repository: "/Users/manuelmaly/Dev/ai/git-jenga"
 # If this list is not empty, 'exec' will refuse to run.
 # User must move entries to appropriate branch fix blocks or delete files.
 errors:
-  - type: outside_ancestry
-    path: "feature.txt"
-    message: "File modified from commit outside stack ancestry."
+  []
 
 # Source state snapshot
 source:
-  head_branch: "feature/TEST-1-abort"
-  head_commit: "2d4bb8ab648f13ecaea797e5ad54afb46e70533b"
+  head_branch: "feature/TEST-1-status"
+  head_commit: "1707311da05224c3ee73c900d0f939e32e904f44"
   base_branch: "main"
-  base_commit: "2d4bb8ab648f13ecaea797e5ad54afb46e70533b"
+  base_commit: "57ba4273e7f536428ddc2a73e3520592d1f8b880"
 
 # Branch stack (ordered from base to HEAD)
 stack:
+  - branch: "feature/TEST-1-status"
+    commit: "1707311da05224c3ee73c900d0f939e32e904f44"
+    parent_branch: "main"
+    commits_from_parent: 1
+    needs_fix: true
+    step_status: pending
+    fix:
+      commit_message: |
+        fix: Apply changes
+        
+        Jira: TEST
+      files:
+        - path: "feature.txt"
+          change_type: modified
+          staged: false
+          diff: |
+            diff --git a/feature.txt b/feature.txt
+            index 1956e05..1394c05 100644
+            --- a/feature.txt
+            +++ b/feature.txt
+            @@ -1 +1,2 @@
+             Feature
+            +Modified
+            
+
