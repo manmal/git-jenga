@@ -11,6 +11,9 @@ pub fn emitPlan(allocator: std.mem.Allocator, plan: types.Plan) ![]const u8 {
     try writer.print("version: {d}\n", .{plan.version});
     try writer.print("generated: \"{s}\"\n", .{plan.generated});
     try writer.print("repository: \"{s}\"\n", .{plan.repository});
+    if (plan.verify_cmd) |cmd| {
+        try writer.print("verify_cmd: \"{s}\"\n", .{cmd});
+    }
     try writer.writeAll("\n");
 
     // Errors section
@@ -99,9 +102,11 @@ pub fn emitState(allocator: std.mem.Allocator, state: types.ExecutionState) ![]c
     try writer.print("  \"plan_hash\": \"{s}\",\n", .{state.plan_hash});
     try writer.print("  \"worktree_path\": \"{s}\",\n", .{state.worktree_path});
     try writer.print("  \"current_step_index\": {d},\n", .{state.current_step_index});
+    try writer.print("  \"current_commit_index\": {d},\n", .{state.current_commit_index});
     try writer.print("  \"started_at\": \"{s}\",\n", .{state.started_at});
     try writer.print("  \"last_updated\": \"{s}\",\n", .{state.last_updated});
     try writer.print("  \"status\": \"{s}\",\n", .{state.status.toString()});
+    try writer.print("  \"mode\": \"{s}\",\n", .{state.mode.toString()});
     try writer.writeAll("  \"completed_branches\": [");
 
     for (state.completed_branches, 0..) |branch, i| {
@@ -111,7 +116,14 @@ pub fn emitState(allocator: std.mem.Allocator, state: types.ExecutionState) ![]c
         }
     }
 
-    try writer.writeAll("]\n");
+    try writer.writeAll("],\n");
+
+    if (state.verify_cmd) |cmd| {
+        try writer.print("  \"verify_cmd\": \"{s}\"\n", .{cmd});
+    } else {
+        try writer.writeAll("  \"verify_cmd\": null\n");
+    }
+
     try writer.writeAll("}\n");
 
     return buffer.toOwnedSlice(allocator);

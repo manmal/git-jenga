@@ -14,6 +14,7 @@ const Parser = struct {
     lines: std.mem.SplitIterator(u8, .scalar),
     line_number: usize,
     current_line: ?[]const u8,
+    peeked_line: ?[]const u8, // For "unreading" a line
 
     fn init(allocator: std.mem.Allocator, content: []const u8) Parser {
         return .{
@@ -22,15 +23,30 @@ const Parser = struct {
             .lines = std.mem.splitScalar(u8, content, '\n'),
             .line_number = 0,
             .current_line = null,
+            .peeked_line = null,
         };
     }
 
     fn nextLine(self: *Parser) ?[]const u8 {
+        return self.nextLineImpl(true);
+    }
+
+    /// Get next line, optionally skipping empty lines and comments
+    fn nextLineImpl(self: *Parser, skip_empty: bool) ?[]const u8 {
+        // If we have a peeked line, return it first
+        if (self.peeked_line) |line| {
+            self.peeked_line = null;
+            self.current_line = line;
+            return line;
+        }
+        
         while (self.lines.next()) |line| {
             self.line_number += 1;
-            const trimmed = strings.trim(line);
-            if (trimmed.len == 0 or trimmed[0] == '#') {
-                continue;
+            if (skip_empty) {
+                const trimmed = strings.trim(line);
+                if (trimmed.len == 0 or trimmed[0] == '#') {
+                    continue;
+                }
             }
             self.current_line = line;
             return line;
@@ -38,11 +54,21 @@ const Parser = struct {
         self.current_line = null;
         return null;
     }
+    
+    /// Get next line including empty/whitespace lines (for literal blocks)
+    fn nextLineRaw(self: *Parser) ?[]const u8 {
+        return self.nextLineImpl(false);
+    }
+    
+    fn unreadLine(self: *Parser, line: []const u8) void {
+        self.peeked_line = line;
+    }
 
     fn parse(self: *Parser) !types.Plan {
         var version: u32 = 1;
         var generated: []const u8 = "";
         var repository: []const u8 = "";
+        var verify_cmd: ?[]const u8 = null;
         var errors: std.ArrayListUnmanaged(types.PlanError) = .{};
         var branches: std.ArrayListUnmanaged(types.StackBranch) = .{};
         var head_branch: []const u8 = "";
@@ -60,6 +86,8 @@ const Parser = struct {
                 generated = try self.parseQuotedString(value);
             } else if (std.mem.eql(u8, key, "repository")) {
                 repository = try self.parseQuotedString(value);
+            } else if (std.mem.eql(u8, key, "verify_cmd")) {
+                verify_cmd = try self.parseQuotedString(value);
             } else if (std.mem.eql(u8, key, "errors")) {
                 errors = try self.parseErrors();
             } else if (std.mem.eql(u8, key, "source")) {
@@ -77,6 +105,7 @@ const Parser = struct {
             .version = version,
             .generated = generated,
             .repository = repository,
+            .verify_cmd = verify_cmd,
             .errors = try errors.toOwnedSlice(self.allocator),
             .stack = .{
                 .branches = try branches.toOwnedSlice(self.allocator),
@@ -122,7 +151,7 @@ const Parser = struct {
         while (self.nextLine()) |line| {
             const indent = self.getIndent(line);
             if (indent == 0) {
-                self.line_number -= 1;
+                self.unreadLine(line);
                 break;
             }
 
@@ -150,7 +179,7 @@ const Parser = struct {
                 while (self.nextLine()) |next_line| {
                     const next_indent = self.getIndent(next_line);
                     if (next_indent <= indent) {
-                        self.line_number -= 1;
+                        self.unreadLine(next_line);
                         break;
                     }
 
@@ -189,7 +218,7 @@ const Parser = struct {
         while (self.nextLine()) |line| {
             const indent = self.getIndent(line);
             if (indent == 0) {
-                self.line_number -= 1;
+                self.unreadLine(line);
                 break;
             }
 
@@ -216,7 +245,7 @@ const Parser = struct {
         while (self.nextLine()) |line| {
             const indent = self.getIndent(line);
             if (indent == 0) {
-                self.line_number -= 1;
+                self.unreadLine(line);
                 break;
             }
 
@@ -235,7 +264,7 @@ const Parser = struct {
                 while (self.nextLine()) |next_line| {
                     const next_indent = self.getIndent(next_line);
                     if (next_indent <= indent) {
-                        self.line_number -= 1;
+                        self.unreadLine(next_line);
                         break;
                     }
 
@@ -273,7 +302,7 @@ const Parser = struct {
         while (self.nextLine()) |line| {
             const indent = self.getIndent(line);
             if (indent <= parent_indent) {
-                self.line_number -= 1;
+                self.unreadLine(line);
                 break;
             }
 
@@ -298,7 +327,7 @@ const Parser = struct {
         while (self.nextLine()) |line| {
             const indent = self.getIndent(line);
             if (indent <= parent_indent) {
-                self.line_number -= 1;
+                self.unreadLine(line);
                 break;
             }
 
@@ -314,7 +343,7 @@ const Parser = struct {
                 while (self.nextLine()) |next_line| {
                     const next_indent = self.getIndent(next_line);
                     if (next_indent <= indent) {
-                        self.line_number -= 1;
+                        self.unreadLine(next_line);
                         break;
                     }
 
@@ -341,22 +370,45 @@ const Parser = struct {
         var buffer: std.ArrayListUnmanaged(u8) = .{};
         errdefer buffer.deinit(self.allocator);
 
-        while (self.nextLine()) |line| {
+        // For YAML literal blocks (|), we need to determine the base indentation
+        // from the first content line and strip exactly that many spaces from each line.
+        // This preserves meaningful leading spaces in the content (like diff context lines).
+        var base_indent: ?usize = null;
+
+        // Use nextLineRaw to include empty/whitespace lines which are significant in literal blocks
+        while (self.nextLineRaw()) |line| {
             const indent = self.getIndent(line);
-            if (indent <= parent_indent) {
-                self.line_number -= 1;
+            
+            // For lines that appear empty or whitespace-only, we still need to check
+            // if they're part of the block and preserve any content after base indent
+            const trimmed = strings.trim(line);
+            
+            // Block ends when we see a non-empty line at or below the parent indent level
+            if (trimmed.len > 0 and indent <= parent_indent) {
+                self.unreadLine(line);
                 break;
             }
 
-            const content = if (indent < line.len) line[indent..] else "";
+            // Set base indentation from first non-empty content line
+            if (base_indent == null and trimmed.len > 0) {
+                base_indent = indent;
+            }
+
+            // For truly empty lines or lines before we establish base_indent, just add newline
+            if (base_indent == null) {
+                try buffer.append(self.allocator, '\n');
+                continue;
+            }
+
+            // Strip exactly base_indent spaces, preserving any additional content
+            // This is important for diff context lines that may be just a space
+            const strip_count = @min(base_indent.?, line.len);
+            const content = line[strip_count..];
             try buffer.appendSlice(self.allocator, content);
             try buffer.append(self.allocator, '\n');
         }
 
-        if (buffer.items.len > 0 and buffer.items[buffer.items.len - 1] == '\n') {
-            _ = buffer.pop();
-        }
-
+        // Keep trailing newline - important for git patches
         return buffer.toOwnedSlice(self.allocator);
     }
 
@@ -405,15 +457,40 @@ pub fn parseState(allocator: std.mem.Allocator, content: []const u8) !types.Exec
         }
     }
 
+    // Parse verify_cmd if present and not null
+    var verify_cmd: ?[]const u8 = null;
+    if (root.get("verify_cmd")) |v| {
+        if (v != .null) {
+            verify_cmd = try strings.copy(allocator, v.string);
+        }
+    }
+
+    // Parse mode if present, default to exec for backwards compatibility
+    var mode: types.ExecutionMode = .exec;
+    if (root.get("mode")) |v| {
+        if (v != .null) {
+            mode = types.ExecutionMode.fromString(v.string) orelse .exec;
+        }
+    }
+
+    // Parse current_commit_index if present, default to 0
+    var current_commit_index: u32 = 0;
+    if (root.get("current_commit_index")) |v| {
+        current_commit_index = @intCast(v.integer);
+    }
+
     return types.ExecutionState{
         .plan_file = try strings.copy(allocator, root.get("plan_file").?.string),
         .plan_hash = try strings.copy(allocator, root.get("plan_hash").?.string),
         .worktree_path = try strings.copy(allocator, root.get("worktree_path").?.string),
         .current_step_index = @intCast(root.get("current_step_index").?.integer),
+        .current_commit_index = current_commit_index,
         .started_at = try strings.copy(allocator, root.get("started_at").?.string),
         .last_updated = try strings.copy(allocator, root.get("last_updated").?.string),
         .status = parseExecutionStatus(root.get("status").?.string),
         .completed_branches = try completed.toOwnedSlice(allocator),
+        .verify_cmd = verify_cmd,
+        .mode = mode,
     };
 }
 
