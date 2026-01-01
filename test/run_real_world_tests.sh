@@ -37,7 +37,7 @@ run_case() {
   pushdown="$5"
 
   echo "==> $name"
-  "$ROOT_DIR/scripts/$setup_script" --force
+  "$ROOT_DIR/test/real_world/$setup_script" --force
 
   plan_worktree="${repo_dir}-restack-plan-ci"
   exec_worktree="${repo_dir}-restack-ci"

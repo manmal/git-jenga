@@ -75,6 +75,51 @@ zig build
 4. `git-restack exec --force` creates `-fix` branches with your changes.
 5. `git-restack apply` updates original branches to the `-fix` tips.
 
+## Usage examples
+
+Plan and resolve conflicts with a specific merge tool:
+
+```sh
+git-restack plan --mergetool kdiff3
+```
+
+Run step-by-step so you can resolve new conflicts as they appear:
+
+```sh
+git-restack step --force
+```
+
+Apply back to the original stack and clean up:
+
+```sh
+git-restack apply --cleanup
+```
+
+## Verification
+
+Run verification commands on every branch during planning or execution:
+
+```sh
+git-restack plan --verify "zig build && zig test"
+git-restack plan --verify-only "zig build"
+```
+
+`exec` reuses the `verify_cmd` captured in the plan.
+
+## Plan + state files
+
+- Plan: `.git/git-restack/plan.yml`
+- Exec state: `.git/git-restack/state.json`
+
+## Cleanup + recovery
+
+```sh
+git-restack cleanup
+git-restack cleanup --keep-plan
+git-restack nuke --force
+git-restack status
+```
+
 ## Conflict resolution
 
 - Conflicts are detected during `plan` by replaying the stack on top of the base branch.
@@ -92,6 +137,7 @@ Run the full suite of real-world scenarios locally or in CI:
 Notes:
 - Tests create temp repos in the parent directory of this repo.
 - Submodule scenarios require `protocol.file.allow=always` (set automatically in the script).
+- Scenario setup scripts live in `test/real_world/`.
 
 ## CI
 

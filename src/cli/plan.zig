@@ -725,6 +725,7 @@ fn resolveConflict(allocator: std.mem.Allocator, ctx: ConflictContext) !types.Pl
         }
     }
 
+    // Capture the resolved content from the simulation worktree for deterministic replay.
     for (conflict_files.items) |*file| {
         const prefer_gitlink = file.resolution.encoding == .gitlink;
         file.resolution.deinit(allocator);

@@ -855,6 +855,7 @@ fn applyConflictResolution(allocator: std.mem.Allocator, wt_path: []const u8, co
         defer allocator.free(full_path);
 
         if (file.resolution.present) {
+            // Gitlinks must be written to the index (not the working tree) to preserve submodule SHAs.
             if (file.resolution.encoding == .gitlink) {
                 const hash = strings.trim(file.resolution.content);
                 const result = process.runGitWithStatus(allocator, &.{
