@@ -69,12 +69,15 @@ const Parser = struct {
         var generated: []const u8 = "";
         var repository: []const u8 = "";
         var verify_cmd: ?[]const u8 = null;
+        var simulation: ?types.PlanSimulation = null;
         var errors: std.ArrayListUnmanaged(types.PlanError) = .{};
+        var conflicts: std.ArrayListUnmanaged(types.PlanConflict) = .{};
         var branches: std.ArrayListUnmanaged(types.StackBranch) = .{};
         var head_branch: []const u8 = "";
         var head_commit: []const u8 = "";
         var base_branch: []const u8 = "";
         var base_commit: []const u8 = "";
+        var base_tip: []const u8 = "";
 
         while (self.nextLine()) |line| {
             const key = self.getKey(line) orelse continue;
@@ -88,14 +91,19 @@ const Parser = struct {
                 repository = try self.parseQuotedString(value);
             } else if (std.mem.eql(u8, key, "verify_cmd")) {
                 verify_cmd = try self.parseQuotedString(value);
+            } else if (std.mem.eql(u8, key, "simulation")) {
+                simulation = try self.parseSimulation();
             } else if (std.mem.eql(u8, key, "errors")) {
                 errors = try self.parseErrors();
+            } else if (std.mem.eql(u8, key, "conflicts")) {
+                conflicts = try self.parseConflicts();
             } else if (std.mem.eql(u8, key, "source")) {
                 const source = try self.parseSource();
                 head_branch = source.head_branch;
                 head_commit = source.head_commit;
                 base_branch = source.base_branch;
                 base_commit = source.base_commit;
+                base_tip = source.base_tip;
             } else if (std.mem.eql(u8, key, "stack")) {
                 branches = try self.parseStack();
             }
@@ -106,11 +114,14 @@ const Parser = struct {
             .generated = generated,
             .repository = repository,
             .verify_cmd = verify_cmd,
+            .simulation = simulation,
             .errors = try errors.toOwnedSlice(self.allocator),
+            .conflicts = try conflicts.toOwnedSlice(self.allocator),
             .stack = .{
                 .branches = try branches.toOwnedSlice(self.allocator),
                 .base_branch = base_branch,
                 .base_commit = base_commit,
+                .base_tip = if (base_tip.len > 0) base_tip else try strings.copy(self.allocator, base_commit),
                 .head_branch = head_branch,
                 .head_commit = head_commit,
             },
@@ -200,11 +211,231 @@ const Parser = struct {
         return errors;
     }
 
+    fn parseSimulation(self: *Parser) !types.PlanSimulation {
+        var mode: types.PlanMode = .worktree;
+        var worktree_path: ?[]const u8 = null;
+        var plan_branch: ?[]const u8 = null;
+        var backups: std.ArrayListUnmanaged(types.BackupBranch) = .{};
+
+        while (self.nextLine()) |line| {
+            const indent = self.getIndent(line);
+            if (indent == 0) {
+                self.unreadLine(line);
+                break;
+            }
+
+            const key = self.getKey(line) orelse continue;
+            const value = self.getValue(line);
+
+            if (std.mem.eql(u8, key, "mode")) {
+                mode = self.parsePlanMode(value);
+            } else if (std.mem.eql(u8, key, "worktree_path")) {
+                if (!std.mem.eql(u8, value, "null")) {
+                    worktree_path = try self.parseQuotedString(value);
+                }
+            } else if (std.mem.eql(u8, key, "plan_branch")) {
+                if (!std.mem.eql(u8, value, "null")) {
+                    plan_branch = try self.parseQuotedString(value);
+                }
+            } else if (std.mem.eql(u8, key, "backup_branches")) {
+                backups = try self.parseBackupBranches(indent);
+            }
+        }
+
+        return types.PlanSimulation{
+            .mode = mode,
+            .worktree_path = worktree_path,
+            .plan_branch = plan_branch,
+            .backup_branches = try backups.toOwnedSlice(self.allocator),
+        };
+    }
+
+    fn parseBackupBranches(self: *Parser, parent_indent: usize) !std.ArrayListUnmanaged(types.BackupBranch) {
+        var backups: std.ArrayListUnmanaged(types.BackupBranch) = .{};
+
+        while (self.nextLine()) |line| {
+            const indent = self.getIndent(line);
+            if (indent <= parent_indent) {
+                self.unreadLine(line);
+                break;
+            }
+
+            const trimmed = strings.trim(line);
+            if (std.mem.startsWith(u8, trimmed, "[]")) {
+                break;
+            }
+
+            if (std.mem.startsWith(u8, trimmed, "- source:")) {
+                var backup = types.BackupBranch{
+                    .source = try self.parseQuotedString(self.getValue(line)),
+                    .backup = "",
+                };
+
+                while (self.nextLine()) |next_line| {
+                    const next_indent = self.getIndent(next_line);
+                    if (next_indent <= indent) {
+                        self.unreadLine(next_line);
+                        break;
+                    }
+
+                    const next_key = self.getKey(next_line) orelse continue;
+                    const next_value = self.getValue(next_line);
+
+                    if (std.mem.eql(u8, next_key, "backup")) {
+                        backup.backup = try self.parseQuotedString(next_value);
+                    }
+                }
+
+                try backups.append(self.allocator, backup);
+            }
+        }
+
+        return backups;
+    }
+
+    fn parseConflicts(self: *Parser) !std.ArrayListUnmanaged(types.PlanConflict) {
+        var conflicts: std.ArrayListUnmanaged(types.PlanConflict) = .{};
+
+        while (self.nextLine()) |line| {
+            const indent = self.getIndent(line);
+            if (indent == 0) {
+                self.unreadLine(line);
+                break;
+            }
+
+            const trimmed = strings.trim(line);
+            if (std.mem.startsWith(u8, trimmed, "[]")) {
+                break;
+            }
+
+            if (std.mem.startsWith(u8, trimmed, "- kind:")) {
+                var conflict = types.PlanConflict{
+                    .kind = self.parseConflictKind(self.getValue(line)),
+                    .branch = "",
+                    .commit = null,
+                    .subject = null,
+                    .files = try self.allocator.alloc(types.ConflictFile, 0),
+                };
+
+                while (self.nextLine()) |next_line| {
+                    const next_indent = self.getIndent(next_line);
+                    if (next_indent <= indent) {
+                        self.unreadLine(next_line);
+                        break;
+                    }
+
+                    const next_key = self.getKey(next_line) orelse continue;
+                    const next_value = self.getValue(next_line);
+
+                    if (std.mem.eql(u8, next_key, "branch")) {
+                        conflict.branch = try self.parseQuotedString(next_value);
+                    } else if (std.mem.eql(u8, next_key, "commit")) {
+                        if (!std.mem.eql(u8, next_value, "null")) {
+                            conflict.commit = try self.parseQuotedString(next_value);
+                        }
+                    } else if (std.mem.eql(u8, next_key, "subject")) {
+                        if (!std.mem.eql(u8, next_value, "null")) {
+                            conflict.subject = try self.parseQuotedString(next_value);
+                        }
+                    } else if (std.mem.eql(u8, next_key, "files")) {
+                        self.allocator.free(conflict.files);
+                        var files_list = try self.parseConflictFiles(next_indent);
+                        conflict.files = try files_list.toOwnedSlice(self.allocator);
+                    }
+                }
+
+                try conflicts.append(self.allocator, conflict);
+            }
+        }
+
+        return conflicts;
+    }
+
+    fn parseConflictFiles(self: *Parser, parent_indent: usize) !std.ArrayListUnmanaged(types.ConflictFile) {
+        var files: std.ArrayListUnmanaged(types.ConflictFile) = .{};
+
+        while (self.nextLine()) |line| {
+            const indent = self.getIndent(line);
+            if (indent <= parent_indent) {
+                self.unreadLine(line);
+                break;
+            }
+
+            const trimmed = strings.trim(line);
+            if (std.mem.startsWith(u8, trimmed, "[]")) {
+                break;
+            }
+
+            if (std.mem.startsWith(u8, trimmed, "- path:")) {
+                var file = types.ConflictFile{
+                    .path = try self.parseQuotedString(self.getValue(line)),
+                    .conflict_diff = try strings.copy(self.allocator, ""),
+                    .resolution = .{
+                        .present = true,
+                        .encoding = .text,
+                        .content = try strings.copy(self.allocator, ""),
+                    },
+                };
+
+                while (self.nextLine()) |next_line| {
+                    const next_indent = self.getIndent(next_line);
+                    if (next_indent <= indent) {
+                        self.unreadLine(next_line);
+                        break;
+                    }
+
+                    const next_key = self.getKey(next_line) orelse continue;
+
+                    if (std.mem.eql(u8, next_key, "conflict_diff")) {
+                        file.conflict_diff = try self.parseLiteralBlock(next_indent);
+                    } else if (std.mem.eql(u8, next_key, "resolution")) {
+                        file.resolution = try self.parseResolution(next_indent);
+                    }
+                }
+
+                try files.append(self.allocator, file);
+            }
+        }
+
+        return files;
+    }
+
+    fn parseResolution(self: *Parser, parent_indent: usize) !types.ConflictResolution {
+        var resolution = types.ConflictResolution{
+            .present = false,
+            .encoding = .text,
+            .content = try strings.copy(self.allocator, ""),
+        };
+
+        while (self.nextLine()) |line| {
+            const indent = self.getIndent(line);
+            if (indent <= parent_indent) {
+                self.unreadLine(line);
+                break;
+            }
+
+            const key = self.getKey(line) orelse continue;
+            const value = self.getValue(line);
+
+            if (std.mem.eql(u8, key, "present")) {
+                resolution.present = std.mem.eql(u8, value, "true");
+            } else if (std.mem.eql(u8, key, "encoding")) {
+                resolution.encoding = self.parseResolutionEncoding(value);
+            } else if (std.mem.eql(u8, key, "content")) {
+                self.allocator.free(resolution.content);
+                resolution.content = try self.parseLiteralBlock(indent);
+            }
+        }
+
+        return resolution;
+    }
+
     const SourceResult = struct {
         head_branch: []const u8,
         head_commit: []const u8,
         base_branch: []const u8,
         base_commit: []const u8,
+        base_tip: []const u8,
     };
 
     fn parseSource(self: *Parser) !SourceResult {
@@ -213,6 +444,7 @@ const Parser = struct {
             .head_commit = "",
             .base_branch = "",
             .base_commit = "",
+            .base_tip = "",
         };
 
         while (self.nextLine()) |line| {
@@ -233,6 +465,8 @@ const Parser = struct {
                 result.base_branch = try self.parseQuotedString(value);
             } else if (std.mem.eql(u8, key, "base_commit")) {
                 result.base_commit = try self.parseQuotedString(value);
+            } else if (std.mem.eql(u8, key, "base_tip")) {
+                result.base_tip = try self.parseQuotedString(value);
             }
         }
 
@@ -433,6 +667,21 @@ const Parser = struct {
         if (std.mem.eql(u8, value, "verified")) return .verified;
         if (std.mem.eql(u8, value, "skipped")) return .skipped;
         return .pending;
+    }
+
+    fn parsePlanMode(self: *Parser, value: []const u8) types.PlanMode {
+        _ = self;
+        return types.PlanMode.fromString(value) orelse .worktree;
+    }
+
+    fn parseConflictKind(self: *Parser, value: []const u8) types.ConflictKind {
+        _ = self;
+        return types.ConflictKind.fromString(value) orelse .cherry_pick;
+    }
+
+    fn parseResolutionEncoding(self: *Parser, value: []const u8) types.ResolutionEncoding {
+        _ = self;
+        return types.ResolutionEncoding.fromString(value) orelse .text;
     }
 
     fn parseChangeType(self: *Parser, value: []const u8) types.ChangeType {

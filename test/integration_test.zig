@@ -266,10 +266,12 @@ test "yaml plan round-trip" {
 
     // Create a plan
     const plan = types.Plan{
-        .version = 1,
+        .version = 2,
         .generated = "2025-01-01T00:00:00Z",
         .repository = "/test/repo",
+        .simulation = null,
         .errors = &[_]types.PlanError{},
+        .conflicts = &[_]types.PlanConflict{},
         .stack = .{
             .branches = &[_]types.StackBranch{
                 .{
@@ -294,6 +296,7 @@ test "yaml plan round-trip" {
             },
             .base_branch = "main",
             .base_commit = "base123",
+            .base_tip = "base123",
             .head_branch = "feature/TEST-1-branch",
             .head_commit = "abc123def456",
         },
@@ -307,7 +310,7 @@ test "yaml plan round-trip" {
     const parsed = try parser.parsePlan(allocator, yaml);
 
     // Verify round-trip
-    try testing.expectEqual(@as(u32, 1), parsed.version);
+    try testing.expectEqual(@as(u32, 2), parsed.version);
     try testing.expectEqualStrings("2025-01-01T00:00:00Z", parsed.generated);
     try testing.expectEqualStrings("/test/repo", parsed.repository);
     try testing.expectEqual(@as(usize, 0), parsed.errors.len);
@@ -324,9 +327,10 @@ test "yaml plan with errors" {
     const allocator = testing.allocator;
 
     const plan = types.Plan{
-        .version = 1,
+        .version = 2,
         .generated = "2025-01-01T00:00:00Z",
         .repository = "/test/repo",
+        .simulation = null,
         .errors = &[_]types.PlanError{
             .{
                 .error_type = .unmapped_file,
@@ -339,10 +343,12 @@ test "yaml plan with errors" {
                 .message = "Outside ancestry",
             },
         },
+        .conflicts = &[_]types.PlanConflict{},
         .stack = .{
             .branches = &[_]types.StackBranch{},
             .base_branch = "main",
             .base_commit = "abc",
+            .base_tip = "abc",
             .head_branch = "feature/x",
             .head_commit = "def",
         },

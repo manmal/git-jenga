@@ -119,6 +119,7 @@ fn showPlanStatus(allocator: std.mem.Allocator, plan_file: []const u8) !void {
 
     // Stack summary
     std.debug.print("Branches: {d}\n", .{plan.stack.branches.len});
+    std.debug.print("Conflicts: {d}\n", .{plan.conflicts.len});
 
     var needs_fix_count: usize = 0;
     var total_files: usize = 0;

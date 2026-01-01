@@ -4,6 +4,8 @@ const parser = @import("../yaml/parser.zig");
 const emitter = @import("../yaml/emitter.zig");
 const strings = @import("../utils/strings.zig");
 const process = @import("../utils/process.zig");
+const stack_mod = @import("../git/stack.zig");
+const diff_mod = @import("../git/diff.zig");
 
 const STATE_DIR = ".git/git-jenga";
 const STATE_FILE = ".git/git-jenga/state.json";
@@ -49,6 +51,12 @@ pub fn run(allocator: std.mem.Allocator, args: []const []const u8) !void {
         std.debug.print("\x1b[31mError:\x1b[0m Plan has {d} unresolved errors.\n", .{plan.errors.len});
         std.process.exit(3);
     }
+
+    validatePlanStack(allocator, plan) catch |err| {
+        std.debug.print("\x1b[31mError:\x1b[0m Plan is out of date: {any}\n", .{err});
+        std.debug.print("Re-run: git-jenga plan\n", .{});
+        std.process.exit(3);
+    };
 
     // Determine worktree path
     const cwd = try process.getCwd(allocator);
@@ -155,6 +163,10 @@ fn executeStep(allocator: std.mem.Allocator, wt_path: []const u8, plan: types.Pl
     const branch_idx = state.current_step_index;
     const branch = plan.stack.branches[branch_idx];
 
+    var conflict_used = try allocator.alloc(bool, plan.conflicts.len);
+    defer allocator.free(conflict_used);
+    @memset(conflict_used, false);
+
     std.debug.print("\n[{d}/{d}] Processing: {s}\n", .{ branch_idx + 1, plan.stack.branches.len, branch.name });
 
     const fix_branch_name = try std.fmt.allocPrint(allocator, "{s}-fix", .{branch.name});
@@ -247,14 +259,14 @@ fn executeStep(allocator: std.mem.Allocator, wt_path: []const u8, plan: types.Pl
             const commit_sha = commits.items[commit_idx];
             std.debug.print("  Cherry-picking commit {d}/{d}: {s}\n", .{ commit_idx + 1, total_commits, commit_sha[0..@min(7, commit_sha.len)] });
 
-            const cherry_result = process.runGitWithStatus(allocator, &.{
+            const cherry_result = process.runGitWithStatusNoRerere(allocator, &.{
                 "-C",
                 wt_path,
                 "cherry-pick",
                 commit_sha,
             }) catch |err| {
                 std.debug.print("Error: Cherry-pick command failed: {any}\n", .{err});
-                state.status = .conflict;
+                state.status = .failed;
                 state.current_commit_index = commit_idx;
                 try saveState(allocator, state);
                 std.process.exit(2);
@@ -263,14 +275,29 @@ fn executeStep(allocator: std.mem.Allocator, wt_path: []const u8, plan: types.Pl
             defer allocator.free(cherry_result.stderr);
 
             if (cherry_result.exit_code != 0) {
-                std.debug.print("\n\x1b[33mConflict during cherry-pick.\x1b[0m\n", .{});
-                std.debug.print("Resolve in: {s}\n", .{wt_path});
-                std.debug.print("Then: cd {s} && git add . && git cherry-pick --continue && cd - && git-jenga step\n", .{wt_path});
+                const conflict_idx = findCherryPickConflict(plan, conflict_used, branch.name, commit_sha) orelse {
+                    std.debug.print("Error: Conflict detected but no resolution found in plan.\n", .{});
+                    state.status = .failed;
+                    state.current_commit_index = commit_idx;
+                    try saveState(allocator, state);
+                    std.process.exit(2);
+                };
+                applyConflictResolution(allocator, wt_path, plan.conflicts[conflict_idx]) catch |err| {
+                    std.debug.print("Error: Failed to apply conflict resolution: {any}\n", .{err});
+                    state.status = .failed;
+                    state.current_commit_index = commit_idx;
+                    try saveState(allocator, state);
+                    std.process.exit(2);
+                };
+                conflict_used[conflict_idx] = true;
 
-                state.status = .conflict;
-                state.current_commit_index = commit_idx;
-                try saveState(allocator, state);
-                std.process.exit(2);
+                if (!finishCherryPick(allocator, wt_path)) {
+                    std.debug.print("Error: Cherry-pick --continue failed after applying resolution.\n", .{});
+                    state.status = .failed;
+                    state.current_commit_index = commit_idx;
+                    try saveState(allocator, state);
+                    std.process.exit(2);
+                }
             }
 
             commit_idx += 1;
@@ -294,10 +321,11 @@ fn executeStep(allocator: std.mem.Allocator, wt_path: []const u8, plan: types.Pl
                 try tmp_file.writeAll(file.diff);
                 tmp_file.close();
 
-                const apply_result = process.runGitWithStatus(allocator, &.{
+                const apply_result = process.runGitWithStatusNoRerere(allocator, &.{
                     "-C",
                     wt_path,
                     "apply",
+                    "--3way",
                     "--allow-empty",
                     tmp_path,
                 }) catch {
@@ -308,7 +336,25 @@ fn executeStep(allocator: std.mem.Allocator, wt_path: []const u8, plan: types.Pl
                 defer allocator.free(apply_result.stderr);
 
                 if (apply_result.exit_code != 0) {
-                    std.debug.print("    Warning: Patch failed for {s}: {s}\n", .{ file.path, apply_result.stderr });
+                    const conflict_paths = try diff_mod.getConflictedFiles(allocator, wt_path);
+                    defer {
+                        for (conflict_paths) |path| allocator.free(path);
+                        allocator.free(conflict_paths);
+                    }
+
+                    const conflict_idx = findFixApplyConflict(plan, conflict_used, branch.name, conflict_paths) orelse {
+                        std.debug.print("Error: Patch conflict but no resolution found in plan.\n", .{});
+                        state.status = .failed;
+                        try saveState(allocator, state);
+                        std.process.exit(2);
+                    };
+                    applyConflictResolution(allocator, wt_path, plan.conflicts[conflict_idx]) catch |err| {
+                        std.debug.print("Error: Failed to apply conflict resolution: {any}\n", .{err});
+                        state.status = .failed;
+                        try saveState(allocator, state);
+                        std.process.exit(2);
+                    };
+                    conflict_used[conflict_idx] = true;
                 } else {
                     std.debug.print("    Applied: {s}\n", .{file.path});
                 }
@@ -407,6 +453,249 @@ fn cleanupState() void {
     std.fs.cwd().deleteFile(STATE_FILE) catch {};
 }
 
+fn validatePlanStack(allocator: std.mem.Allocator, plan: types.Plan) !void {
+    var current = stack_mod.analyzeStack(allocator) catch |err| {
+        std.debug.print("Error: Could not analyze current stack: {any}\n", .{err});
+        return err;
+    };
+    defer current.deinit(allocator);
+
+    if (!std.mem.eql(u8, current.base_branch, plan.stack.base_branch)) {
+        return types.JengaError.InvalidPlan;
+    }
+    if (!std.mem.eql(u8, current.base_tip, plan.stack.base_tip)) {
+        return types.JengaError.InvalidPlan;
+    }
+    if (!std.mem.eql(u8, current.head_branch, plan.stack.head_branch)) {
+        return types.JengaError.InvalidPlan;
+    }
+    if (current.branches.len != plan.stack.branches.len) {
+        return types.JengaError.InvalidPlan;
+    }
+
+    for (current.branches, 0..) |branch, idx| {
+        const planned = plan.stack.branches[idx];
+        if (!std.mem.eql(u8, branch.name, planned.name)) return types.JengaError.InvalidPlan;
+        if (!std.mem.eql(u8, branch.commit_sha, planned.commit_sha)) return types.JengaError.InvalidPlan;
+    }
+
+    var planned_set: std.StringHashMapUnmanaged(void) = .{};
+    defer planned_set.deinit(allocator);
+    for (plan.stack.branches) |branch| {
+        try planned_set.put(allocator, branch.name, {});
+    }
+
+    const feature_raw = process.runGit(allocator, &.{
+        "for-each-ref",
+        "--format=%(refname:short)",
+        "refs/heads/feature",
+    }) catch return types.JengaError.InvalidPlan;
+    defer allocator.free(feature_raw);
+
+    var iter = std.mem.splitScalar(u8, strings.trim(feature_raw), '\n');
+    while (iter.next()) |line| {
+        const name = strings.trim(line);
+        if (name.len == 0) continue;
+        if (planned_set.contains(name)) continue;
+        if (isBranchInRange(allocator, current.base_commit, current.head_commit, name)) {
+            return types.JengaError.InvalidPlan;
+        }
+    }
+}
+
+fn isBranchInRange(allocator: std.mem.Allocator, base_commit: []const u8, head_commit: []const u8, branch: []const u8) bool {
+    return isAncestor(allocator, base_commit, branch) and isAncestor(allocator, branch, head_commit);
+}
+
+fn isAncestor(allocator: std.mem.Allocator, ancestor: []const u8, descendant: []const u8) bool {
+    const result = process.runGitWithStatus(allocator, &.{
+        "merge-base",
+        "--is-ancestor",
+        ancestor,
+        descendant,
+    }) catch return false;
+    defer allocator.free(result.stdout);
+    defer allocator.free(result.stderr);
+    return result.exit_code == 0;
+}
+
+fn findCherryPickConflict(plan: types.Plan, used: []bool, branch: []const u8, commit: []const u8) ?usize {
+    for (plan.conflicts, 0..) |conflict, idx| {
+        if (used[idx]) continue;
+        if (conflict.kind != .cherry_pick) continue;
+        if (!std.mem.eql(u8, conflict.branch, branch)) continue;
+        const conflict_commit = conflict.commit orelse continue;
+        if (std.mem.eql(u8, conflict_commit, commit)) return idx;
+    }
+    return null;
+}
+
+fn findFixApplyConflict(
+    plan: types.Plan,
+    used: []bool,
+    branch: []const u8,
+    conflict_paths: []const []const u8,
+) ?usize {
+    for (plan.conflicts, 0..) |conflict, idx| {
+        if (used[idx]) continue;
+        if (conflict.kind != .fix_apply) continue;
+        if (!std.mem.eql(u8, conflict.branch, branch)) continue;
+        if (conflict.files.len != conflict_paths.len) continue;
+        if (!pathsMatch(conflict.files, conflict_paths)) continue;
+        return idx;
+    }
+    return null;
+}
+
+fn pathsMatch(files: []types.ConflictFile, paths: []const []const u8) bool {
+    for (files) |file| {
+        var found = false;
+        for (paths) |path| {
+            if (std.mem.eql(u8, file.path, path)) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) return false;
+    }
+    return true;
+}
+
+fn applyConflictResolution(allocator: std.mem.Allocator, wt_path: []const u8, conflict: types.PlanConflict) !void {
+    for (conflict.files) |file| {
+        const full_path = try std.fs.path.join(allocator, &.{ wt_path, file.path });
+        defer allocator.free(full_path);
+
+        if (file.resolution.present) {
+            if (file.resolution.encoding == .gitlink) {
+                const hash = strings.trim(file.resolution.content);
+                const result = process.runGitWithStatus(allocator, &.{
+                    "-C",
+                    wt_path,
+                    "update-index",
+                    "--cacheinfo",
+                    "160000",
+                    hash,
+                    file.path,
+                }) catch return types.JengaError.GitCommandFailed;
+                defer allocator.free(result.stdout);
+                defer allocator.free(result.stderr);
+                if (result.exit_code != 0) {
+                    return types.JengaError.GitCommandFailed;
+                }
+                continue;
+            }
+
+            if (std.fs.cwd().statFile(full_path)) |stat| {
+                if (stat.kind == .directory) {
+                    std.fs.cwd().deleteTree(full_path) catch {};
+                }
+            } else |_| {}
+
+            const content = switch (file.resolution.encoding) {
+                .text => try allocator.dupe(u8, file.resolution.content),
+                .base64 => try decodeBase64(allocator, file.resolution.content),
+                .gitlink => return types.JengaError.ParseError,
+            };
+            defer allocator.free(content);
+
+            if (std.fs.path.dirname(full_path)) |dir| {
+                std.fs.cwd().makePath(dir) catch {};
+            }
+
+            const out_file = try std.fs.cwd().createFile(full_path, .{});
+            defer out_file.close();
+            try out_file.writeAll(content);
+        } else {
+            if (file.resolution.encoding == .gitlink) {
+                if (process.runGitWithStatus(allocator, &.{
+                    "-C",
+                    wt_path,
+                    "rm",
+                    "-f",
+                    "--cached",
+                    "--",
+                    file.path,
+                })) |result| {
+                    allocator.free(result.stdout);
+                    allocator.free(result.stderr);
+                } else |_| {}
+                removePath(full_path);
+            } else {
+                std.fs.cwd().deleteFile(full_path) catch {};
+            }
+        }
+    }
+
+    _ = process.runGitInDir(allocator, wt_path, &.{ "add", "-A" }) catch {};
+    const remaining = try diff_mod.getConflictedFiles(allocator, wt_path);
+    defer {
+        for (remaining) |path| allocator.free(path);
+        allocator.free(remaining);
+    }
+    if (remaining.len > 0) {
+        return types.JengaError.ConflictDetected;
+    }
+}
+
+fn removePath(path: []const u8) void {
+    if (std.fs.cwd().statFile(path)) |stat| {
+        if (stat.kind == .directory) {
+            std.fs.cwd().deleteTree(path) catch {};
+        } else {
+            std.fs.cwd().deleteFile(path) catch {};
+        }
+    } else |_| {}
+}
+
+fn decodeBase64(allocator: std.mem.Allocator, content: []const u8) ![]u8 {
+    const decoded_len = std.base64.standard.Decoder.calcSizeForSlice(content) catch {
+        return types.JengaError.ParseError;
+    };
+    const decoded = try allocator.alloc(u8, decoded_len);
+    errdefer allocator.free(decoded);
+
+    std.base64.standard.Decoder.decode(decoded, content) catch {
+        return types.JengaError.ParseError;
+    };
+    return decoded;
+}
+
+fn finishCherryPick(allocator: std.mem.Allocator, wt_path: []const u8) bool {
+    const continue_result = process.runGitWithStatusNoRerere(allocator, &.{
+        "-C",
+        wt_path,
+        "cherry-pick",
+        "--continue",
+        "--no-edit",
+    }) catch return false;
+    defer allocator.free(continue_result.stdout);
+    defer allocator.free(continue_result.stderr);
+
+    if (continue_result.exit_code == 0) {
+        return true;
+    }
+
+    if (!isEmptyCherryPickOutput(continue_result.stdout) and !isEmptyCherryPickOutput(continue_result.stderr)) {
+        return false;
+    }
+
+    const skip_result = process.runGitWithStatusNoRerere(allocator, &.{
+        "-C",
+        wt_path,
+        "cherry-pick",
+        "--skip",
+    }) catch return false;
+    defer allocator.free(skip_result.stdout);
+    defer allocator.free(skip_result.stderr);
+    return skip_result.exit_code == 0;
+}
+
+fn isEmptyCherryPickOutput(output: []const u8) bool {
+    return std.mem.indexOf(u8, output, "previous cherry-pick is now empty") != null or
+        std.mem.indexOf(u8, output, "nothing to commit") != null;
+}
+
 fn printHelp() void {
     std.debug.print(
         \\Usage: git-jenga step [plan.yml] [OPTIONS]
@@ -425,7 +714,7 @@ fn printHelp() void {
         \\Exit Codes:
         \\  0 - Step completed (or all done)
         \\  1 - General error
-        \\  2 - Conflict during cherry-pick (resolve, then run step again)
+        \\  2 - Conflict without a plan resolution (re-run plan)
         \\  3 - Validation error
         \\  4 - Verification failed
         \\

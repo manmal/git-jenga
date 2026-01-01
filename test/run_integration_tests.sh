@@ -61,6 +61,42 @@ run_test() {
     fi
 }
 
+# Configure a mergetool that auto-resolves using ours/theirs.
+setup_auto_mergetool() {
+    local mode=${1:-ours}
+    local tool="jenga-${mode}"
+    local script_path="$PWD/.git/${tool}.sh"
+
+    cat > "$script_path" <<'EOF'
+#!/bin/sh
+LOCAL="$1"
+REMOTE="$2"
+BASE="$3"
+MERGED="$4"
+
+if [ "$MODE" = "theirs" ]; then
+    cp "$REMOTE" "$MERGED"
+else
+    cp "$LOCAL" "$MERGED"
+fi
+
+exit 0
+EOF
+
+    chmod +x "$script_path"
+
+    if [ "$mode" = "theirs" ]; then
+        MODE=theirs
+    else
+        MODE=ours
+    fi
+
+    git config mergetool.$tool.cmd "MODE=$MODE $script_path \"\\$LOCAL\" \"\\$REMOTE\" \"\\$BASE\" \"\\$MERGED\""
+    git config mergetool.$tool.trustExitCode true
+
+    echo "$tool"
+}
+
 # ============================================================================
 # TEST: Stack command on simple hierarchy
 # ============================================================================
@@ -131,7 +167,7 @@ test_plan_generates_yaml() {
     
     # Check plan file exists and has expected content
     [ -f test-plan.yml ] || { echo "Plan file not created"; return 1; }
-    grep -q "version: 1" test-plan.yml || { echo "Missing version"; return 1; }
+    grep -q "version: 2" test-plan.yml || { echo "Missing version"; return 1; }
     grep -q "feature/TEST-1-plan" test-plan.yml || { echo "Missing branch"; return 1; }
     grep -q "needs_fix: true" test-plan.yml || { echo "Missing needs_fix"; return 1; }
     return 0
@@ -563,7 +599,7 @@ test_plan_output_path() {
     "$JENGA" plan -o plans/subdir/my-plan.yml >/dev/null 2>&1
     
     [ -f plans/subdir/my-plan.yml ] || { echo "Plan not created at nested path"; return 1; }
-    grep -q "version: 1" plans/subdir/my-plan.yml || return 1
+    grep -q "version: 2" plans/subdir/my-plan.yml || return 1
     return 0
 }
 
@@ -787,7 +823,7 @@ test_verify_only_mode() {
 # ============================================================================
 # TEST: Conflict shows future diffs for conflicted files
 # ============================================================================
-test_conflict_shows_future_diffs() {
+test_plan_auto_resolves_conflicts() {
     echo "# Test" > README.md
     git add . && git commit -q -m "Initial commit"
     git branch -M main
@@ -797,39 +833,30 @@ test_conflict_shows_future_diffs() {
     echo "line1" > shared.txt
     git add . && git commit -q -m "Add shared.txt"
     
-    # Create second branch that modifies the same file
+    # Create second branch that modifies the same line
     git checkout -q -b feature/TEST-2-second
     echo "line1-from-second" > shared.txt
     git add . && git commit -q -m "Modify shared.txt in second"
     
-    # Create third branch that also modifies the file (this is the "future" change)
-    git checkout -q -b feature/TEST-3-third
-    echo "line1-from-third" > shared.txt
-    git add . && git commit -q -m "Modify shared.txt in third"
+    # Move base branch forward with a conflicting change
+    git checkout -q main
+    echo "line1-from-main" > shared.txt
+    git add . && git commit -q -m "Modify shared.txt on main"
     
-    # Stay on TEST-3 (top of stack) and make uncommitted change to shared.txt
-    # This change maps to TEST-1-first (where the file was introduced)
-    # When exec runs, it will:
-    # 1. Process TEST-1-first, apply the fix
-    # 2. Process TEST-2-second, cherry-pick will conflict with the fix
-    # 3. At that point, TEST-3-third's changes are "future"
-    echo "line1-totally-different" > shared.txt
+    # Back to top of stack
+    git checkout -q feature/TEST-2-second
     
-    # Generate plan from top of stack
-    "$JENGA" plan >/dev/null 2>&1
+    local tool
+    tool=$(setup_auto_mergetool "ours")
     
-    # Execute - capture output to check for future diffs
-    local output=$("$JENGA" exec --force 2>&1 || true)
+    "$JENGA" plan --mergetool "$tool" >/dev/null 2>&1 || { echo "Plan failed"; return 1; }
+    grep -q "conflicts:" .git/git-jenga/plan.yml || { echo "Plan missing conflicts block"; return 1; }
+    grep -q "conflict_diff:" .git/git-jenga/plan.yml || { echo "Plan missing conflict diff"; return 1; }
+    grep -q "resolution:" .git/git-jenga/plan.yml || { echo "Plan missing resolution block"; return 1; }
     
-    # Should show "FUTURE CHANGES" section when there's a conflict
-    # The conflict happens when cherry-picking TEST-2 onto modified TEST-1
-    if echo "$output" | grep -q "Conflict detected"; then
-        echo "$output" | grep -q "FUTURE CHANGES" || { echo "Should show FUTURE CHANGES header on conflict"; echo "$output"; return 1; }
-        echo "$output" | grep -q "TEST-3-third" || { echo "Should mention TEST-3-third as future change"; echo "$output"; return 1; }
-    fi
-    
-    # Clean up - abort the execution if in conflict state
-    "$JENGA" exec --abort >/dev/null 2>&1 || true
+    "$JENGA" exec --force >/dev/null 2>&1
+    local code=$?
+    [ $code -eq 0 ] || { echo "Exec failed with code $code"; return 1; }
     
     return 0
 }
@@ -837,7 +864,7 @@ test_conflict_shows_future_diffs() {
 # ============================================================================
 # TEST: Continue runs verification after conflict resolution
 # ============================================================================
-test_continue_runs_verification() {
+test_plan_conflict_runs_verification() {
     echo "# Test" > README.md
     git add . && git commit -q -m "Initial commit"
     git branch -M main
@@ -852,54 +879,205 @@ test_continue_runs_verification() {
     echo "line1-modified-by-second" > conflict.txt
     git add . && git commit -q -m "Modify conflict.txt in second"
     
-    # Now modify the file in TEST-1 (uncommitted) - this will cause a conflict
-    git checkout feature/TEST-1-first
-    echo "line1-modified-by-fix" > conflict.txt
+    # Move base branch forward with a conflicting change
+    git checkout -q main
+    echo "line1-modified-by-main" > conflict.txt
+    git add . && git commit -q -m "Modify conflict.txt in main"
+    
+    git checkout -q feature/TEST-2-second
+    
+    local tool
+    tool=$(setup_auto_mergetool "ours")
     
     # Create verification log
-    local verify_log="$PWD/verify_after_continue.log"
+    local verify_log="$PWD/verify_after_plan.log"
     rm -f "$verify_log"
     
-    # Generate plan with verification
-    "$JENGA" plan --verify "echo \$(git rev-parse --short HEAD) >> $verify_log" >/dev/null 2>&1
+    # Generate plan with verification and conflict resolution
+    "$JENGA" plan --mergetool "$tool" --verify "echo \$(git rev-parse --short HEAD) >> $verify_log" >/dev/null 2>&1 || {
+        echo "Plan failed"; return 1;
+    }
     
-    # Start execution - this should hit a conflict when cherry-picking TEST-2 onto modified TEST-1
     "$JENGA" exec --force >/dev/null 2>&1
     local code=$?
+    [ $code -eq 0 ] || { echo "Exec failed with code $code"; return 1; }
     
-    # Should exit with conflict (code 2) or succeed if no conflict
-    # If it succeeded, the test scenario didn't create a conflict as expected
-    if [ $code -eq 0 ]; then
-        # No conflict - verify log should exist with entries
-        [ -f "$verify_log" ] || { echo "No conflict occurred but verify log missing"; return 1; }
-        return 0
-    fi
-    
-    [ $code -eq 2 ] || { echo "Expected conflict (exit 2), got $code"; return 1; }
-    
-    # Resolve conflict in worktree
-    local wt_path="../$(basename $(pwd))-jenga"
-    cd "$wt_path"
-    echo "resolved-content" > conflict.txt
-    git add conflict.txt
-    git cherry-pick --continue --no-edit >/dev/null 2>&1
-    cd - >/dev/null
-    
-    # Clear the log to only count verifications after continue
-    rm -f "$verify_log"
-    
-    # Continue execution
-    "$JENGA" exec --continue >/dev/null 2>&1
-    code=$?
-    
-    [ $code -eq 0 ] || { echo "Continue failed with code $code"; return 1; }
-    
-    # Verify that verification ran after continue
-    [ -f "$verify_log" ] || { echo "Verify log not created after continue"; return 1; }
-    
+    [ -f "$verify_log" ] || { echo "Verify log not created"; return 1; }
     local call_count=$(wc -l < "$verify_log" | tr -d ' ')
-    [ "$call_count" -ge 1 ] || { echo "Expected at least 1 verify call after continue, got $call_count"; return 1; }
+    [ "$call_count" -ge 1 ] || { echo "Expected verification calls, got $call_count"; return 1; }
     
+    return 0
+}
+
+# ============================================================================
+# TEST: Modify/Delete conflict auto-resolves
+# ============================================================================
+test_plan_conflict_modify_delete() {
+    echo "# Test" > README.md
+    git add . && git commit -q -m "Initial commit"
+    git branch -M main
+
+    echo "line1" > doomed.txt
+    git add doomed.txt && git commit -q -m "Add doomed.txt"
+
+    git checkout -q -b feature/TEST-1-delete
+    git rm -q doomed.txt
+    git commit -q -m "Delete doomed.txt"
+
+    git checkout -q main
+    echo "line1-from-main" > doomed.txt
+    git add doomed.txt && git commit -q -m "Modify doomed.txt on main"
+
+    git checkout -q feature/TEST-1-delete
+
+    local tool
+    tool=$(setup_auto_mergetool "ours")
+
+    "$JENGA" plan --mergetool "$tool" >/dev/null 2>&1 || { echo "Plan failed"; return 1; }
+    "$JENGA" exec --force >/dev/null 2>&1 || { echo "Exec failed"; return 1; }
+
+    return 0
+}
+
+# ============================================================================
+# TEST: Add/Add conflict auto-resolves
+# ============================================================================
+test_plan_conflict_add_add() {
+    echo "# Test" > README.md
+    git add . && git commit -q -m "Initial commit"
+    git branch -M main
+
+    git checkout -q -b feature/TEST-1-add
+    echo "from-feature" > added.txt
+    git add added.txt && git commit -q -m "Add added.txt in feature"
+
+    git checkout -q main
+    echo "from-main" > added.txt
+    git add added.txt && git commit -q -m "Add added.txt in main"
+
+    git checkout -q feature/TEST-1-add
+
+    local tool
+    tool=$(setup_auto_mergetool "ours")
+
+    "$JENGA" plan --mergetool "$tool" >/dev/null 2>&1 || { echo "Plan failed"; return 1; }
+    "$JENGA" exec --force >/dev/null 2>&1 || { echo "Exec failed"; return 1; }
+
+    return 0
+}
+
+# ============================================================================
+# TEST: File/Directory conflict auto-resolves
+# ============================================================================
+test_plan_conflict_file_dir() {
+    echo "# Test" > README.md
+    git add . && git commit -q -m "Initial commit"
+    git branch -M main
+
+    git checkout -q -b feature/TEST-1-file
+    echo "file-version" > node
+    git add node && git commit -q -m "Add node file"
+
+    git checkout -q main
+    rm -f node
+    mkdir -p node
+    echo "dir-version" > node/inside.txt
+    git add node/inside.txt && git commit -q -m "Add node directory"
+
+    git checkout -q feature/TEST-1-file
+
+    local tool
+    tool=$(setup_auto_mergetool "ours")
+
+    "$JENGA" plan --mergetool "$tool" >/dev/null 2>&1 || { echo "Plan failed"; return 1; }
+    "$JENGA" exec --force >/dev/null 2>&1 || { echo "Exec failed"; return 1; }
+
+    return 0
+}
+
+# ============================================================================
+# TEST: Binary conflict stores base64 resolution
+# ============================================================================
+test_plan_conflict_binary() {
+    echo "# Test" > README.md
+    git add . && git commit -q -m "Initial commit"
+    git branch -M main
+
+    printf '\x00\x01\x02' > bin.dat
+    git add bin.dat && git commit -q -m "Add bin.dat"
+
+    git checkout -q -b feature/TEST-1-binary
+    printf '\x00\x02\x03' > bin.dat
+    git add bin.dat && git commit -q -m "Modify bin.dat in feature"
+
+    git checkout -q main
+    printf '\x00\x03\x04' > bin.dat
+    git add bin.dat && git commit -q -m "Modify bin.dat in main"
+
+    git checkout -q feature/TEST-1-binary
+
+    local tool
+    tool=$(setup_auto_mergetool "ours")
+
+    "$JENGA" plan --mergetool "$tool" >/dev/null 2>&1 || { echo "Plan failed"; return 1; }
+    grep -q "encoding: base64" .git/git-jenga/plan.yml || { echo "Expected base64 encoding in plan"; return 1; }
+    "$JENGA" exec --force >/dev/null 2>&1 || { echo "Exec failed"; return 1; }
+
+    return 0
+}
+
+# ============================================================================
+# TEST: Plan invalidated by new feature branch in stack
+# ============================================================================
+test_plan_invalid_new_branch() {
+    echo "# Test" > README.md
+    git add . && git commit -q -m "Initial commit"
+    git branch -M main
+
+    git checkout -q -b feature/TEST-1-first
+    echo "one" > file.txt
+    git add file.txt && git commit -q -m "Commit 1"
+    echo "two" >> file.txt
+    git add file.txt && git commit -q -m "Commit 2"
+
+    local first_commit
+    first_commit=$(git rev-list --reverse HEAD | head -n1)
+
+    "$JENGA" plan >/dev/null 2>&1 || { echo "Plan failed"; return 1; }
+
+    git branch feature/TEST-NEW "$first_commit"
+
+    "$JENGA" exec --force >/dev/null 2>&1
+    local code=$?
+    [ $code -ne 0 ] || { echo "Expected exec to fail for new branch"; return 1; }
+
+    return 0
+}
+
+# ============================================================================
+# TEST: Plan invalidated by base branch moving
+# ============================================================================
+test_plan_invalid_base_tip() {
+    echo "# Test" > README.md
+    git add . && git commit -q -m "Initial commit"
+    git branch -M main
+
+    git checkout -q -b feature/TEST-1-first
+    echo "line1" > file.txt
+    git add file.txt && git commit -q -m "Add file"
+
+    "$JENGA" plan >/dev/null 2>&1 || { echo "Plan failed"; return 1; }
+
+    git checkout -q main
+    echo "line1-main" > file.txt
+    git add file.txt && git commit -q -m "Advance main"
+
+    git checkout -q feature/TEST-1-first
+
+    "$JENGA" exec --force >/dev/null 2>&1
+    local code=$?
+    [ $code -ne 0 ] || { echo "Expected exec to fail after base moved"; return 1; }
+
     return 0
 }
 
@@ -1190,8 +1368,14 @@ run_test "Diffs are actually applied to files" test_diffs_applied
 run_test "Verify command runs once per branch" test_verify_runs_per_branch
 run_test "Apply resets original branches to -fix branches" test_apply_resets_branches
 run_test "Verify-only mode runs verification without changes" test_verify_only_mode
-run_test "Continue runs verification after conflict resolution" test_continue_runs_verification
-run_test "Conflict shows future diffs for conflicted files" test_conflict_shows_future_diffs
+run_test "Plan conflict resolution runs verification" test_plan_conflict_runs_verification
+run_test "Plan auto-resolves conflicts" test_plan_auto_resolves_conflicts
+run_test "Plan conflict modify/delete" test_plan_conflict_modify_delete
+run_test "Plan conflict add/add" test_plan_conflict_add_add
+run_test "Plan conflict file/dir" test_plan_conflict_file_dir
+run_test "Plan conflict binary" test_plan_conflict_binary
+run_test "Plan invalidated by new branch" test_plan_invalid_new_branch
+run_test "Plan invalidated by base move" test_plan_invalid_base_tip
 run_test "Step command processes one branch at a time" test_step_single_branch
 run_test "Step auto-detects fresh start vs continue" test_step_auto_detect
 run_test "Step command applies fixes correctly" test_step_applies_fixes

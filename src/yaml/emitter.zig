@@ -34,6 +34,33 @@ pub fn emitPlan(allocator: std.mem.Allocator, plan: types.Plan) ![]const u8 {
     }
     try writer.writeAll("\n");
 
+    // Simulation metadata
+    if (plan.simulation) |sim| {
+        try writer.writeAll("# Simulation metadata\n");
+        try writer.writeAll("simulation:\n");
+        try writer.print("  mode: {s}\n", .{sim.mode.toString()});
+        if (sim.worktree_path) |path| {
+            try writer.print("  worktree_path: \"{s}\"\n", .{path});
+        } else {
+            try writer.writeAll("  worktree_path: null\n");
+        }
+        if (sim.plan_branch) |name| {
+            try writer.print("  plan_branch: \"{s}\"\n", .{name});
+        } else {
+            try writer.writeAll("  plan_branch: null\n");
+        }
+        try writer.writeAll("  backup_branches:\n");
+        if (sim.backup_branches.len == 0) {
+            try writer.writeAll("    []\n");
+        } else {
+            for (sim.backup_branches) |branch| {
+                try writer.print("    - source: \"{s}\"\n", .{branch.source});
+                try writer.print("      backup: \"{s}\"\n", .{branch.backup});
+            }
+        }
+        try writer.writeAll("\n");
+    }
+
     // Source state
     try writer.writeAll("# Source state snapshot\n");
     try writer.writeAll("source:\n");
@@ -41,6 +68,7 @@ pub fn emitPlan(allocator: std.mem.Allocator, plan: types.Plan) ![]const u8 {
     try writer.print("  head_commit: \"{s}\"\n", .{plan.stack.head_commit});
     try writer.print("  base_branch: \"{s}\"\n", .{plan.stack.base_branch});
     try writer.print("  base_commit: \"{s}\"\n", .{plan.stack.base_commit});
+    try writer.print("  base_tip: \"{s}\"\n", .{plan.stack.base_tip});
     try writer.writeAll("\n");
 
     // Stack
@@ -87,6 +115,52 @@ pub fn emitPlan(allocator: std.mem.Allocator, plan: types.Plan) ![]const u8 {
         }
         try writer.writeAll("\n");
     }
+
+    // Conflicts
+    try writer.writeAll("# Conflict resolutions\n");
+    try writer.writeAll("conflicts:\n");
+    if (plan.conflicts.len == 0) {
+        try writer.writeAll("  []\n");
+    } else {
+        for (plan.conflicts) |conflict| {
+            try writer.writeAll("  - kind: ");
+            try writer.writeAll(conflict.kind.toString());
+            try writer.writeAll("\n");
+            try writer.print("    branch: \"{s}\"\n", .{conflict.branch});
+            if (conflict.commit) |commit| {
+                try writer.print("    commit: \"{s}\"\n", .{commit});
+            } else {
+                try writer.writeAll("    commit: null\n");
+            }
+            if (conflict.subject) |subject| {
+                try writer.print("    subject: \"{s}\"\n", .{subject});
+            } else {
+                try writer.writeAll("    subject: null\n");
+            }
+            try writer.writeAll("    files:\n");
+            for (conflict.files) |file| {
+                try writer.print("      - path: \"{s}\"\n", .{file.path});
+                try writer.writeAll("        conflict_diff: |\n");
+                var diff_lines = std.mem.splitScalar(u8, file.conflict_diff, '\n');
+                while (diff_lines.next()) |line| {
+                    try writer.writeAll("          ");
+                    try writer.writeAll(line);
+                    try writer.writeAll("\n");
+                }
+                try writer.writeAll("        resolution:\n");
+                try writer.print("          present: {}\n", .{file.resolution.present});
+                try writer.print("          encoding: {s}\n", .{file.resolution.encoding.toString()});
+                try writer.writeAll("          content: |\n");
+                var content_lines = std.mem.splitScalar(u8, file.resolution.content, '\n');
+                while (content_lines.next()) |line| {
+                    try writer.writeAll("            ");
+                    try writer.writeAll(line);
+                    try writer.writeAll("\n");
+                }
+            }
+        }
+    }
+    try writer.writeAll("\n");
 
     return buffer.toOwnedSlice(allocator);
 }

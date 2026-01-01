@@ -28,6 +28,125 @@ pub const Fix = struct {
     }
 };
 
+pub const PlanMode = enum {
+    worktree,
+    direct,
+
+    pub fn toString(self: PlanMode) []const u8 {
+        return switch (self) {
+            .worktree => "worktree",
+            .direct => "direct",
+        };
+    }
+
+    pub fn fromString(value: []const u8) ?PlanMode {
+        if (std.mem.eql(u8, value, "worktree")) return .worktree;
+        if (std.mem.eql(u8, value, "direct")) return .direct;
+        return null;
+    }
+};
+
+pub const BackupBranch = struct {
+    source: []const u8,
+    backup: []const u8,
+
+    pub fn deinit(self: *BackupBranch, allocator: std.mem.Allocator) void {
+        allocator.free(self.source);
+        allocator.free(self.backup);
+    }
+};
+
+pub const PlanSimulation = struct {
+    mode: PlanMode = .worktree,
+    worktree_path: ?[]const u8 = null,
+    plan_branch: ?[]const u8 = null,
+    backup_branches: []BackupBranch = &[_]BackupBranch{},
+
+    pub fn deinit(self: *PlanSimulation, allocator: std.mem.Allocator) void {
+        if (self.worktree_path) |path| allocator.free(path);
+        if (self.plan_branch) |name| allocator.free(name);
+        for (self.backup_branches) |*branch| branch.deinit(allocator);
+        allocator.free(self.backup_branches);
+    }
+};
+
+pub const ConflictKind = enum {
+    cherry_pick,
+    fix_apply,
+
+    pub fn toString(self: ConflictKind) []const u8 {
+        return switch (self) {
+            .cherry_pick => "cherry_pick",
+            .fix_apply => "fix_apply",
+        };
+    }
+
+    pub fn fromString(value: []const u8) ?ConflictKind {
+        if (std.mem.eql(u8, value, "cherry_pick")) return .cherry_pick;
+        if (std.mem.eql(u8, value, "fix_apply")) return .fix_apply;
+        return null;
+    }
+};
+
+pub const ResolutionEncoding = enum {
+    text,
+    base64,
+    gitlink,
+
+    pub fn toString(self: ResolutionEncoding) []const u8 {
+        return switch (self) {
+            .text => "text",
+            .base64 => "base64",
+            .gitlink => "gitlink",
+        };
+    }
+
+    pub fn fromString(value: []const u8) ?ResolutionEncoding {
+        if (std.mem.eql(u8, value, "text")) return .text;
+        if (std.mem.eql(u8, value, "base64")) return .base64;
+        if (std.mem.eql(u8, value, "gitlink")) return .gitlink;
+        return null;
+    }
+};
+
+pub const ConflictResolution = struct {
+    present: bool,
+    encoding: ResolutionEncoding = .text,
+    content: []const u8,
+
+    pub fn deinit(self: *ConflictResolution, allocator: std.mem.Allocator) void {
+        allocator.free(self.content);
+    }
+};
+
+pub const ConflictFile = struct {
+    path: []const u8,
+    conflict_diff: []const u8,
+    resolution: ConflictResolution,
+
+    pub fn deinit(self: *ConflictFile, allocator: std.mem.Allocator) void {
+        allocator.free(self.path);
+        allocator.free(self.conflict_diff);
+        self.resolution.deinit(allocator);
+    }
+};
+
+pub const PlanConflict = struct {
+    kind: ConflictKind,
+    branch: []const u8,
+    commit: ?[]const u8,
+    subject: ?[]const u8,
+    files: []ConflictFile,
+
+    pub fn deinit(self: *PlanConflict, allocator: std.mem.Allocator) void {
+        allocator.free(self.branch);
+        if (self.commit) |c| allocator.free(c);
+        if (self.subject) |s| allocator.free(s);
+        for (self.files) |*file| file.deinit(allocator);
+        allocator.free(self.files);
+    }
+};
+
 pub const FileChange = struct {
     path: []const u8,
     change_type: ChangeType,
@@ -76,6 +195,7 @@ pub const Stack = struct {
     branches: []StackBranch,
     base_branch: []const u8,
     base_commit: []const u8,
+    base_tip: []const u8,
     head_branch: []const u8,
     head_commit: []const u8,
 
@@ -84,6 +204,7 @@ pub const Stack = struct {
         allocator.free(self.branches);
         allocator.free(self.base_branch);
         allocator.free(self.base_commit);
+        allocator.free(self.base_tip);
         allocator.free(self.head_branch);
         allocator.free(self.head_commit);
     }
@@ -119,15 +240,20 @@ pub const Plan = struct {
     generated: []const u8,
     repository: []const u8,
     verify_cmd: ?[]const u8 = null,
+    simulation: ?PlanSimulation = null,
     errors: []PlanError,
+    conflicts: []PlanConflict,
     stack: Stack,
 
     pub fn deinit(self: *Plan, allocator: std.mem.Allocator) void {
         allocator.free(self.generated);
         allocator.free(self.repository);
         if (self.verify_cmd) |cmd| allocator.free(cmd);
+        if (self.simulation) |*sim| sim.deinit(allocator);
         for (self.errors) |*e| e.deinit(allocator);
         allocator.free(self.errors);
+        for (self.conflicts) |*conflict| conflict.deinit(allocator);
+        allocator.free(self.conflicts);
         self.stack.deinit(allocator);
     }
 };

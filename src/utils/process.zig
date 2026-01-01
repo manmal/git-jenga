@@ -58,6 +58,22 @@ pub fn runGitWithStatus(allocator: std.mem.Allocator, args: []const []const u8) 
     };
 }
 
+/// Runs a git command with rerere explicitly disabled.
+pub fn runGitWithStatusNoRerere(allocator: std.mem.Allocator, args: []const []const u8) !GitResult {
+    const full_args = try allocator.alloc([]const u8, args.len + 4);
+    defer allocator.free(full_args);
+
+    full_args[0] = "-c";
+    full_args[1] = "rerere.enabled=false";
+    full_args[2] = "-c";
+    full_args[3] = "rerere.autoUpdate=false";
+    for (args, 0..) |arg, i| {
+        full_args[i + 4] = arg;
+    }
+
+    return runGitWithStatus(allocator, full_args);
+}
+
 /// Run a git command in a specific directory
 pub fn runGitInDir(allocator: std.mem.Allocator, dir: []const u8, args: []const []const u8) ![]const u8 {
     // Build args array: ["git", "-C", dir] + args

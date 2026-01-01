@@ -24,6 +24,11 @@ pub fn analyzeStack(allocator: std.mem.Allocator) !types.Stack {
         return types.JengaError.BaseBranchNotFound;
     }
 
+    // 4. Get base branch tip
+    const base_tip_raw = try process.runGit(allocator, &.{ "rev-parse", base_branch });
+    defer allocator.free(base_tip_raw);
+    const base_tip = try strings.copy(allocator, strings.trim(base_tip_raw));
+
     // 4. Get merge-base commit
     const merge_base_raw = try process.runGit(allocator, &.{ "merge-base", "HEAD", base_branch });
     defer allocator.free(merge_base_raw);
@@ -52,6 +57,7 @@ pub fn analyzeStack(allocator: std.mem.Allocator) !types.Stack {
             .branches = try branches.toOwnedSlice(allocator),
             .base_branch = base_branch,
             .base_commit = base_commit,
+            .base_tip = base_tip,
             .head_branch = head_branch,
             .head_commit = head_commit,
         };
@@ -79,28 +85,34 @@ pub fn analyzeStack(allocator: std.mem.Allocator) !types.Stack {
             });
 
             // This branch becomes the parent for the next segment
-            current_parent_branch = branch_name;
+            // We need to copy since branch_name will be freed with the branch
+            current_parent_branch = try strings.copy(allocator, branch_name);
             commits_since_last_branch = 0;
         }
     }
+
+    // Free the last parent_branch copy that wasn't used by any branch
+    if (current_parent_branch) |cpb| allocator.free(cpb);
 
     return types.Stack{
         .branches = try branches.toOwnedSlice(allocator),
         .base_branch = base_branch,
         .base_commit = base_commit,
+        .base_tip = base_tip,
         .head_branch = head_branch,
         .head_commit = head_commit,
     };
 }
 
 fn checkBranchExists(allocator: std.mem.Allocator, branch: []const u8) bool {
-    const result = process.runGit(allocator, &.{ "rev-parse", "--verify", branch }) catch return false;
-    allocator.free(result);
-    return true;
+    const result = process.runGitWithStatus(allocator, &.{ "rev-parse", "--verify", branch }) catch return false;
+    defer allocator.free(result.stdout);
+    defer allocator.free(result.stderr);
+    return result.exit_code == 0;
 }
 
 /// Returns the branch name if one exists at this commit.
-/// Filters out 'develop', 'main', and HEAD.
+/// Only returns feature/* branches.
 fn getBranchAtCommit(allocator: std.mem.Allocator, commit_sha: []const u8) !?[]const u8 {
     const raw = try process.runGit(allocator, &.{ "branch", "--points-at", commit_sha, "--format=%(refname:short)" });
     defer allocator.free(raw);
@@ -109,9 +121,9 @@ fn getBranchAtCommit(allocator: std.mem.Allocator, commit_sha: []const u8) !?[]c
     while (iter.next()) |b| {
         const branch = strings.trim(b);
         if (branch.len == 0) continue;
-        if (std.mem.eql(u8, branch, "develop")) continue;
-        if (std.mem.eql(u8, branch, "main")) continue;
-        if (std.mem.eql(u8, branch, "HEAD")) continue;
+
+        // Only include feature/* branches
+        if (!std.mem.startsWith(u8, branch, "feature/")) continue;
 
         // Return the first valid feature branch found
         return try strings.copy(allocator, branch);
@@ -162,6 +174,7 @@ pub fn printJson(allocator: std.mem.Allocator, stack: types.Stack) !void {
     std.debug.print("{{\n", .{});
     std.debug.print("  \"base_branch\": \"{s}\",\n", .{stack.base_branch});
     std.debug.print("  \"base_commit\": \"{s}\",\n", .{stack.base_commit});
+    std.debug.print("  \"base_tip\": \"{s}\",\n", .{stack.base_tip});
     std.debug.print("  \"head_branch\": \"{s}\",\n", .{stack.head_branch});
     std.debug.print("  \"head_commit\": \"{s}\",\n", .{stack.head_commit});
     std.debug.print("  \"branches\": [\n", .{});

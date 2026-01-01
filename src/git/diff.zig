@@ -10,7 +10,44 @@ pub const ChangedFile = struct {
     staged: bool,
     /// The commit that last touched this file (if known)
     last_commit: ?[]const u8,
+
+    pub fn deinit(self: *ChangedFile, allocator: std.mem.Allocator) void {
+        allocator.free(self.path);
+        if (self.last_commit) |lc| allocator.free(lc);
+    }
 };
+
+/// Get list of conflicted files (unmerged) in a worktree
+pub fn getConflictedFiles(allocator: std.mem.Allocator, repo_path: []const u8) ![]([]const u8) {
+    var files: std.ArrayListUnmanaged([]const u8) = .{};
+    errdefer {
+        for (files.items) |path| allocator.free(path);
+        files.deinit(allocator);
+    }
+
+    const result = process.runGitWithStatus(allocator, &.{
+        "-C",
+        repo_path,
+        "diff",
+        "--name-only",
+        "--diff-filter=U",
+    }) catch return files.toOwnedSlice(allocator);
+    defer allocator.free(result.stdout);
+    defer allocator.free(result.stderr);
+
+    if (result.exit_code != 0 or result.stdout.len == 0) {
+        return files.toOwnedSlice(allocator);
+    }
+
+    var iter = std.mem.splitScalar(u8, strings.trim(result.stdout), '\n');
+    while (iter.next()) |line| {
+        const trimmed = strings.trim(line);
+        if (trimmed.len == 0) continue;
+        try files.append(allocator, try strings.copy(allocator, trimmed));
+    }
+
+    return files.toOwnedSlice(allocator);
+}
 
 /// Get all staged files
 pub fn getStagedFiles(allocator: std.mem.Allocator) ![]ChangedFile {

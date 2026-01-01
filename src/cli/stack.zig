@@ -15,7 +15,7 @@ pub fn run(allocator: std.mem.Allocator, args: []const []const u8) !void {
         }
     }
 
-    const stack = stack_mod.analyzeStack(allocator) catch |err| {
+    var stack = stack_mod.analyzeStack(allocator) catch |err| {
         switch (err) {
             types.JengaError.GitCommandFailed => {
                 std.debug.print("Error: Git command failed. Are you in a git repository?\n", .{});
@@ -29,6 +29,7 @@ pub fn run(allocator: std.mem.Allocator, args: []const []const u8) !void {
         }
         std.process.exit(1);
     };
+    defer stack.deinit(allocator);
 
     if (json_output) {
         try stack_mod.printJson(allocator, stack);
