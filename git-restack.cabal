@@ -1,0 +1,44 @@
+cabal-version:      2.4
+name:               git-restack
+version:            0.1.0
+synopsis:           Strict stacked branch restacking tool
+license:            MIT
+license-file:       LICENSE
+author:             git-restack contributors
+maintainer:         you@example.com
+build-type:         Simple
+
+executable git-restack
+  main-is:          Main.hs
+  hs-source-dirs:   app, hs-src
+  default-language: Haskell2010
+  ghc-options:      -Wall -Wcompat -Widentities -Wincomplete-record-updates
+                    -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:    base >=4.14 && <5
+                  , bytestring
+                  , containers
+                  , directory
+                  , filepath
+                  , optparse-applicative
+                  , process
+                  , text
+                  , time
+                  , yaml
+                  , aeson
+                  , base64-bytestring
+                  , unordered-containers
+
+  other-modules:    GitRestack.Apply
+                  , GitRestack.Cleanup
+                  , GitRestack.Conflict
+                  , GitRestack.Diff
+                  , GitRestack.Exec
+                  , GitRestack.Git
+                  , GitRestack.Nuke
+                  , GitRestack.Plan
+                  , GitRestack.Stack
+                  , GitRestack.Status
+                  , GitRestack.Step
+                  , GitRestack.Types
+                  , GitRestack.Utils
+                  , GitRestack.Yaml

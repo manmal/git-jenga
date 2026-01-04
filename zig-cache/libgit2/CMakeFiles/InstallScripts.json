@@ -1,0 +1,14 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/cmake_install.cmake",
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/src/cmake_install.cmake",
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/deps/llhttp/cmake_install.cmake",
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/deps/pcre/cmake_install.cmake",
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/deps/xdiff/cmake_install.cmake",
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/deps/zlib/cmake_install.cmake",
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/src/libgit2/cmake_install.cmake",
+		"/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/src/util/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

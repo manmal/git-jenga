@@ -537,7 +537,7 @@ fn headBranchName(allocator: std.mem.Allocator, repo: *git.c.git_repository) !?[
     }
 
     const name_ptr = git.c.git_reference_shorthand(head_ref.?) orelse return null;
-    return allocator.dupe(u8, std.mem.span(name_ptr));
+    return try allocator.dupe(u8, std.mem.span(name_ptr));
 }
 
 fn globMatch(pattern: []const u8, text: []const u8) bool {

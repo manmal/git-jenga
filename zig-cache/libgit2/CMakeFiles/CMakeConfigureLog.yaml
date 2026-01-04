@@ -1,0 +1,2255 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      The system is: Darwin - 24.6.0 - arm64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is AppleClang, found in:
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/4.0.1/CompilerIdC/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_39eef/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_39eef.dir/build.make CMakeFiles/cmTC_39eef.dir/build
+        Building C object CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -arch arm64   -v -Wl,-v -MD -MT CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+        Apple clang version 17.0.0 (clang-1700.3.19.1)
+        Target: arm64-apple-darwin24.6.0
+        Thread model: posix
+        InstalledDir: /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+        clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+         "/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL -resource-dir /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin24.6.0
+        ignoring nonexistent directory "/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"
+        ignoring nonexistent directory "/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/local/include
+         /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include
+         /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+         /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+         /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+         /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)
+        End of search list.
+        Linking C executable cmTC_39eef
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_39eef.dir/link.txt --verbose=1
+        Apple clang version 17.0.0 (clang-1700.3.19.1)
+        Target: arm64-apple-darwin24.6.0
+        Thread model: posix
+        InstalledDir: /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+         "/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.0 -syslibroot /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_39eef -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
+        @(#)PROGRAM:ld PROJECT:ld-1221.4
+        BUILD 16:29:08 Aug 11 2025
+        configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
+        will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
+        LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
+        TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.3.8)
+        Library search paths:
+        	/usr/local/lib
+        	/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib
+        	/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift
+        Framework search paths:
+        	/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks
+        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -o cmTC_39eef
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:122 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Effective list of requested architectures (possibly empty)  : ""
+      Effective list of architectures found in the ABI info binary: "arm64"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:191 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/local/include]
+          add: [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+          add: [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include]
+          add: [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        end of search list found
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include] ==> [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+        collapse include dir [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include] ==> [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include]
+        collapse include dir [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        implicit include dirs: [/usr/local/include;/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include;/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include;/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:227 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL']
+        ignore line: []
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_39eef/fast]
+        ignore line: [/Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_39eef.dir/build.make CMakeFiles/cmTC_39eef.dir/build]
+        ignore line: [Building C object CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -arch arm64   -v -Wl -v -MD -MT CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
+        ignore line: [Target: arm64-apple-darwin24.6.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+        ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+        ignore line: [ "/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f3TrsL -resource-dir /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin24.6.0]
+        ignore line: [ignoring nonexistent directory "/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+        ignore line: [ /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include]
+        ignore line: [ /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        ignore line: [ /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
+        ignore line: [ /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)]
+        ignore line: [End of search list.]
+        ignore line: [Linking C executable cmTC_39eef]
+        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_39eef.dir/link.txt --verbose=1]
+        ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
+        ignore line: [Target: arm64-apple-darwin24.6.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+        link line: [ "/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.0 -syslibroot /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_39eef -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+          arg [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+          arg [-demangle] ==> ignore
+          arg [-lto_library] ==> ignore, skip following value
+          arg [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+          arg [-dynamic] ==> ignore
+          arg [-arch] ==> ignore
+          arg [arm64] ==> ignore
+          arg [-platform_version] ==> ignore
+          arg [macos] ==> ignore
+          arg [15.0.0] ==> ignore
+          arg [26.0] ==> ignore
+          arg [-syslibroot] ==> ignore
+          arg [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk] ==> ignore
+          arg [-mllvm] ==> ignore
+          arg [-enable-linkonceodr-outlining] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_39eef] ==> ignore
+          arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
+          arg [-search_paths_first] ==> ignore
+          arg [-headerpad_max_install_names] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_39eef.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lSystem] ==> lib [System]
+          arg [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        linker tool for 'C': /Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
+        Library search paths: [;/usr/local/lib;/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib;/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift]
+        Framework search paths: [;/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks]
+        remove lib [System]
+        remove lib [/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+        collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+        collapse library dir [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib] ==> [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib]
+        collapse library dir [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift] ==> [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift]
+        collapse framework dir [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks] ==> [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: [/usr/local/lib;/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib;/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift]
+        implicit fwks: [/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:264 (cmake_determine_linker_id)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Running the C compiler's linker: "/Applications/Xcode-26.0.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" "-v"
+      @(#)PROGRAM:ld PROJECT:ld-1221.4
+      BUILD 16:29:08 Aug 11 2025
+      configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
+      will use ld-classic for: armv6 armv7 armv7s i386 armv6m armv7k armv7m armv7em
+      LTO support using: LLVM version 17.0.0 (static support for 29, runtime is 29)
+      TAPI support using: Apple TAPI version 17.0.0 (tapi-1700.3.8)
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/FindThreads.cmake:97 (check_c_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "CMakeLists.txt:94 (include)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-WQ6154"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-WQ6154"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-WQ6154'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_bbe6b/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_bbe6b.dir/build.make CMakeFiles/cmTC_bbe6b.dir/build
+        Building C object CMakeFiles/cmTC_bbe6b.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -arch arm64 -MD -MT CMakeFiles/cmTC_bbe6b.dir/src.c.o -MF CMakeFiles/cmTC_bbe6b.dir/src.c.o.d -o CMakeFiles/cmTC_bbe6b.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-WQ6154/src.c
+        Linking C executable cmTC_bbe6b
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bbe6b.dir/link.txt --verbose=1
+        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_bbe6b.dir/src.c.o -o cmTC_bbe6b
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSourceCompiles.cmake:89 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckStructHasMember.cmake:85 (check_source_compiles)"
+      - "cmake/FindStatNsec.cmake:1 (check_struct_has_member)"
+      - "CMakeLists.txt:95 (include)"
+    checks:
+      - "Performing Test HAVE_STRUCT_STAT_ST_MTIM"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hQxmZO"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hQxmZO"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STRUCT_STAT_ST_MTIM"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hQxmZO'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_c4b3a/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_c4b3a.dir/build.make CMakeFiles/cmTC_c4b3a.dir/build
+        Building C object CMakeFiles/cmTC_c4b3a.dir/src.c.o
+        /usr/bin/cc -DHAVE_STRUCT_STAT_ST_MTIM  -arch arm64 -MD -MT CMakeFiles/cmTC_c4b3a.dir/src.c.o -MF CMakeFiles/cmTC_c4b3a.dir/src.c.o.d -o CMakeFiles/cmTC_c4b3a.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hQxmZO/src.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hQxmZO/src.c:7:36: error: no member named 'st_mtim' in 'struct stat'
+            7 |   (void)sizeof(((struct stat *)0)->st_mtim);
+              |                ~~~~~~~~~~~~~~~~~~  ^
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_c4b3a.dir/src.c.o] Error 1
+        make: *** [cmTC_c4b3a/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSourceCompiles.cmake:89 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckStructHasMember.cmake:85 (check_source_compiles)"
+      - "cmake/FindStatNsec.cmake:3 (check_struct_has_member)"
+      - "CMakeLists.txt:95 (include)"
+    checks:
+      - "Performing Test HAVE_STRUCT_STAT_ST_MTIMESPEC"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HBFGTu"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HBFGTu"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STRUCT_STAT_ST_MTIMESPEC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HBFGTu'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_1623b/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_1623b.dir/build.make CMakeFiles/cmTC_1623b.dir/build
+        Building C object CMakeFiles/cmTC_1623b.dir/src.c.o
+        /usr/bin/cc -DHAVE_STRUCT_STAT_ST_MTIMESPEC  -arch arm64 -MD -MT CMakeFiles/cmTC_1623b.dir/src.c.o -MF CMakeFiles/cmTC_1623b.dir/src.c.o.d -o CMakeFiles/cmTC_1623b.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HBFGTu/src.c
+        Linking C executable cmTC_1623b
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1623b.dir/link.txt --verbose=1
+        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_1623b.dir/src.c.o -o cmTC_1623b
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSourceCompiles.cmake:89 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckStructHasMember.cmake:85 (check_source_compiles)"
+      - "cmake/FindStatNsec.cmake:5 (check_struct_has_member)"
+      - "CMakeLists.txt:95 (include)"
+    checks:
+      - "Performing Test HAVE_STRUCT_STAT_MTIME_NSEC"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-H7Kjv6"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-H7Kjv6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STRUCT_STAT_MTIME_NSEC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-H7Kjv6'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_6d2fc/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_6d2fc.dir/build.make CMakeFiles/cmTC_6d2fc.dir/build
+        Building C object CMakeFiles/cmTC_6d2fc.dir/src.c.o
+        /usr/bin/cc -DHAVE_STRUCT_STAT_MTIME_NSEC  -arch arm64 -MD -MT CMakeFiles/cmTC_6d2fc.dir/src.c.o -MF CMakeFiles/cmTC_6d2fc.dir/src.c.o.d -o CMakeFiles/cmTC_6d2fc.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-H7Kjv6/src.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-H7Kjv6/src.c:6:36: error: no member named 'st_mtime_nsec' in 'struct stat'; did you mean 'st_mtimespec'?
+            6 |   (void)sizeof(((struct stat *)0)->st_mtime_nsec);
+              |                                    ^~~~~~~~~~~~~
+              |                                    st_mtimespec
+        /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/stat.h:182:13: note: 'st_mtimespec' declared here
+          182 | struct stat __DARWIN_STRUCT_STAT64;
+              |             ^
+        /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/stat.h:166:2: note: expanded from macro '__DARWIN_STRUCT_STAT64'
+          166 |         __DARWIN_STRUCT_STAT64_TIMES \\
+              |         ^
+        /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/stat.h:130:18: note: expanded from macro '__DARWIN_STRUCT_STAT64_TIMES'
+          130 |         struct timespec st_mtimespec;           /* time of last data modification */ \\
+              |                         ^
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_6d2fc.dir/src.c.o] Error 1
+        make: *** [cmTC_6d2fc/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/Findfutimens.cmake:9 (enable_warnings)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Performing Test IS_WERROR_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UbuWps"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UbuWps"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WERROR_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UbuWps'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_f22be/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_f22be.dir/build.make CMakeFiles/cmTC_f22be.dir/build
+        Building C object CMakeFiles/cmTC_f22be.dir/src.c.o
+        /usr/bin/cc -DIS_WERROR_SUPPORTED  -arch arm64   -Werror -MD -MT CMakeFiles/cmTC_f22be.dir/src.c.o -MF CMakeFiles/cmTC_f22be.dir/src.c.o.d -o CMakeFiles/cmTC_f22be.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UbuWps/src.c
+        Linking C executable cmTC_f22be
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f22be.dir/link.txt --verbose=1
+        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_f22be.dir/src.c.o -o cmTC_f22be
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:160 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:65 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "cmake/Findfutimens.cmake:10 (check_symbol_exists)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Looking for futimens"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-556Tfk"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-556Tfk"
+    cmakeVariables:
+      CMAKE_C_FLAGS: " "
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_FUTIMENS"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-556Tfk'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_32a0d/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_32a0d.dir/build.make CMakeFiles/cmTC_32a0d.dir/build
+        Building C object CMakeFiles/cmTC_32a0d.dir/CheckSymbolExists.c.o
+        /usr/bin/cc   -arch arm64 -MD -MT CMakeFiles/cmTC_32a0d.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_32a0d.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_32a0d.dir/CheckSymbolExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-556Tfk/CheckSymbolExists.c
+        Linking C executable cmTC_32a0d
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32a0d.dir/link.txt --verbose=1
+        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_32a0d.dir/CheckSymbolExists.c.o -o cmTC_32a0d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:6 (add_c_flag_if_supported)"
+      - "cmake/Findfutimens.cmake:11 (disable_warnings)"
+      - "CMakeLists.txt:96 (include)"
+    checks:
+      - "Performing Test IS_WNO_ERROR_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BUqQMX"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BUqQMX"
+    cmakeVariables:
+      CMAKE_C_FLAGS: " -Werror"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WNO_ERROR_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BUqQMX'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_e1bec/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_e1bec.dir/build.make CMakeFiles/cmTC_e1bec.dir/build
+        Building C object CMakeFiles/cmTC_e1bec.dir/src.c.o
+        /usr/bin/cc -DIS_WNO_ERROR_SUPPORTED  -Werror  -arch arm64   -Wno-error -MD -MT CMakeFiles/cmTC_e1bec.dir/src.c.o -MF CMakeFiles/cmTC_e1bec.dir/src.c.o.d -o CMakeFiles/cmTC_e1bec.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BUqQMX/src.c
+        Linking C executable cmTC_e1bec
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1bec.dir/link.txt --verbose=1
+        /usr/bin/cc  -Werror  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_e1bec.dir/src.c.o -o cmTC_e1bec
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:104 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WALL_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-JN3qtZ"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-JN3qtZ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WALL_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-JN3qtZ'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_ae9f7/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_ae9f7.dir/build.make CMakeFiles/cmTC_ae9f7.dir/build
+        Building C object CMakeFiles/cmTC_ae9f7.dir/src.c.o
+        /usr/bin/cc -DIS_WALL_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error  -arch arm64   -Wall -MD -MT CMakeFiles/cmTC_ae9f7.dir/src.c.o -MF CMakeFiles/cmTC_ae9f7.dir/src.c.o.d -o CMakeFiles/cmTC_ae9f7.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-JN3qtZ/src.c
+        Linking C executable cmTC_ae9f7
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ae9f7.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_ae9f7.dir/src.c.o -o cmTC_ae9f7
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:105 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WEXTRA_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z5N8J3"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z5N8J3"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WEXTRA_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z5N8J3'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_bb2ac/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_bb2ac.dir/build.make CMakeFiles/cmTC_bb2ac.dir/build
+        Building C object CMakeFiles/cmTC_bb2ac.dir/src.c.o
+        /usr/bin/cc -DIS_WEXTRA_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall  -arch arm64   -Wextra -MD -MT CMakeFiles/cmTC_bb2ac.dir/src.c.o -MF CMakeFiles/cmTC_bb2ac.dir/src.c.o.d -o CMakeFiles/cmTC_bb2ac.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z5N8J3/src.c
+        Linking C executable cmTC_bb2ac
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb2ac.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_bb2ac.dir/src.c.o -o cmTC_bb2ac
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:128 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WDOCUMENTATION_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5nHq5U"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5nHq5U"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WDOCUMENTATION_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5nHq5U'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_49d6c/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_49d6c.dir/build.make CMakeFiles/cmTC_49d6c.dir/build
+        Building C object CMakeFiles/cmTC_49d6c.dir/src.c.o
+        /usr/bin/cc -DIS_WDOCUMENTATION_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra  -arch arm64   -Wdocumentation -MD -MT CMakeFiles/cmTC_49d6c.dir/src.c.o -MF CMakeFiles/cmTC_49d6c.dir/src.c.o.d -o CMakeFiles/cmTC_49d6c.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5nHq5U/src.c
+        Linking C executable cmTC_49d6c
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49d6c.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_49d6c.dir/src.c.o -o cmTC_49d6c
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:6 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:129 (disable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WNO_DOCUMENTATION_DEPRECATED_SYNC_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5b3tgv"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5b3tgv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WNO_DOCUMENTATION_DEPRECATED_SYNC_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5b3tgv'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_7431d/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_7431d.dir/build.make CMakeFiles/cmTC_7431d.dir/build
+        Building C object CMakeFiles/cmTC_7431d.dir/src.c.o
+        /usr/bin/cc -DIS_WNO_DOCUMENTATION_DEPRECATED_SYNC_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation  -arch arm64   -Wno-documentation-deprecated-sync -MD -MT CMakeFiles/cmTC_7431d.dir/src.c.o -MF CMakeFiles/cmTC_7431d.dir/src.c.o.d -o CMakeFiles/cmTC_7431d.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-5b3tgv/src.c
+        Linking C executable cmTC_7431d
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7431d.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_7431d.dir/src.c.o -o cmTC_7431d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:6 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:130 (disable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WNO_MISSING_FIELD_INITIALIZERS_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XW18ex"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XW18ex"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WNO_MISSING_FIELD_INITIALIZERS_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XW18ex'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_183ce/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_183ce.dir/build.make CMakeFiles/cmTC_183ce.dir/build
+        Building C object CMakeFiles/cmTC_183ce.dir/src.c.o
+        /usr/bin/cc -DIS_WNO_MISSING_FIELD_INITIALIZERS_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync  -arch arm64   -Wno-missing-field-initializers -MD -MT CMakeFiles/cmTC_183ce.dir/src.c.o -MF CMakeFiles/cmTC_183ce.dir/src.c.o.d -o CMakeFiles/cmTC_183ce.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XW18ex/src.c
+        Linking C executable cmTC_183ce
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_183ce.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_183ce.dir/src.c.o -o cmTC_183ce
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:131 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WMISSING_DECLARATIONS_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-zZYKsH"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-zZYKsH"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WMISSING_DECLARATIONS_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-zZYKsH'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_7bdff/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_7bdff.dir/build.make CMakeFiles/cmTC_7bdff.dir/build
+        Building C object CMakeFiles/cmTC_7bdff.dir/src.c.o
+        /usr/bin/cc -DIS_WMISSING_DECLARATIONS_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers  -arch arm64   -Wmissing-declarations -MD -MT CMakeFiles/cmTC_7bdff.dir/src.c.o -MF CMakeFiles/cmTC_7bdff.dir/src.c.o.d -o CMakeFiles/cmTC_7bdff.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-zZYKsH/src.c
+        Linking C executable cmTC_7bdff
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7bdff.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_7bdff.dir/src.c.o -o cmTC_7bdff
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:132 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WSTRICT_ALIASING_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gRwQkk"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gRwQkk"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WSTRICT_ALIASING_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gRwQkk'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_90c1d/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_90c1d.dir/build.make CMakeFiles/cmTC_90c1d.dir/build
+        Building C object CMakeFiles/cmTC_90c1d.dir/src.c.o
+        /usr/bin/cc -DIS_WSTRICT_ALIASING_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations  -arch arm64   -Wstrict-aliasing -MD -MT CMakeFiles/cmTC_90c1d.dir/src.c.o -MF CMakeFiles/cmTC_90c1d.dir/src.c.o.d -o CMakeFiles/cmTC_90c1d.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gRwQkk/src.c
+        Linking C executable cmTC_90c1d
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90c1d.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_90c1d.dir/src.c.o -o cmTC_90c1d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:133 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WSTRICT_PROTOTYPES_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-SRcZg2"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-SRcZg2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WSTRICT_PROTOTYPES_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-SRcZg2'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_b45a4/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_b45a4.dir/build.make CMakeFiles/cmTC_b45a4.dir/build
+        Building C object CMakeFiles/cmTC_b45a4.dir/src.c.o
+        /usr/bin/cc -DIS_WSTRICT_PROTOTYPES_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing  -arch arm64   -Wstrict-prototypes -MD -MT CMakeFiles/cmTC_b45a4.dir/src.c.o -MF CMakeFiles/cmTC_b45a4.dir/src.c.o.d -o CMakeFiles/cmTC_b45a4.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-SRcZg2/src.c
+        Linking C executable cmTC_b45a4
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b45a4.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_b45a4.dir/src.c.o -o cmTC_b45a4
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:134 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WDECLARATION_AFTER_STATEMENT_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-p3K4Jb"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-p3K4Jb"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WDECLARATION_AFTER_STATEMENT_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-p3K4Jb'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_3fa01/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_3fa01.dir/build.make CMakeFiles/cmTC_3fa01.dir/build
+        Building C object CMakeFiles/cmTC_3fa01.dir/src.c.o
+        /usr/bin/cc -DIS_WDECLARATION_AFTER_STATEMENT_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes  -arch arm64   -Wdeclaration-after-statement -MD -MT CMakeFiles/cmTC_3fa01.dir/src.c.o -MF CMakeFiles/cmTC_3fa01.dir/src.c.o.d -o CMakeFiles/cmTC_3fa01.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-p3K4Jb/src.c
+        Linking C executable cmTC_3fa01
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3fa01.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_3fa01.dir/src.c.o -o cmTC_3fa01
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:135 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WSHIFT_COUNT_OVERFLOW_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ly403c"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ly403c"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WSHIFT_COUNT_OVERFLOW_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ly403c'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_a7151/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_a7151.dir/build.make CMakeFiles/cmTC_a7151.dir/build
+        Building C object CMakeFiles/cmTC_a7151.dir/src.c.o
+        /usr/bin/cc -DIS_WSHIFT_COUNT_OVERFLOW_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement  -arch arm64   -Wshift-count-overflow -MD -MT CMakeFiles/cmTC_a7151.dir/src.c.o -MF CMakeFiles/cmTC_a7151.dir/src.c.o.d -o CMakeFiles/cmTC_a7151.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ly403c/src.c
+        Linking C executable cmTC_a7151
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a7151.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_a7151.dir/src.c.o -o cmTC_a7151
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:136 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WUNUSED_CONST_VARIABLE_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z3L9xP"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z3L9xP"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WUNUSED_CONST_VARIABLE_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z3L9xP'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_990d7/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_990d7.dir/build.make CMakeFiles/cmTC_990d7.dir/build
+        Building C object CMakeFiles/cmTC_990d7.dir/src.c.o
+        /usr/bin/cc -DIS_WUNUSED_CONST_VARIABLE_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow  -arch arm64   -Wunused-const-variable -MD -MT CMakeFiles/cmTC_990d7.dir/src.c.o -MF CMakeFiles/cmTC_990d7.dir/src.c.o.d -o CMakeFiles/cmTC_990d7.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-z3L9xP/src.c
+        Linking C executable cmTC_990d7
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_990d7.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_990d7.dir/src.c.o -o cmTC_990d7
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:137 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WUNUSED_FUNCTION_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-X6YuhB"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-X6YuhB"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WUNUSED_FUNCTION_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-X6YuhB'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_afe27/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_afe27.dir/build.make CMakeFiles/cmTC_afe27.dir/build
+        Building C object CMakeFiles/cmTC_afe27.dir/src.c.o
+        /usr/bin/cc -DIS_WUNUSED_FUNCTION_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable  -arch arm64   -Wunused-function -MD -MT CMakeFiles/cmTC_afe27.dir/src.c.o -MF CMakeFiles/cmTC_afe27.dir/src.c.o.d -o CMakeFiles/cmTC_afe27.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-X6YuhB/src.c
+        Linking C executable cmTC_afe27
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_afe27.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_afe27.dir/src.c.o -o cmTC_afe27
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:138 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WINT_CONVERSION_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-95ZiWn"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-95ZiWn"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WINT_CONVERSION_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-95ZiWn'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_860c7/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_860c7.dir/build.make CMakeFiles/cmTC_860c7.dir/build
+        Building C object CMakeFiles/cmTC_860c7.dir/src.c.o
+        /usr/bin/cc -DIS_WINT_CONVERSION_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function  -arch arm64   -Wint-conversion -MD -MT CMakeFiles/cmTC_860c7.dir/src.c.o -MF CMakeFiles/cmTC_860c7.dir/src.c.o.d -o CMakeFiles/cmTC_860c7.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-95ZiWn/src.c
+        Linking C executable cmTC_860c7
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_860c7.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_860c7.dir/src.c.o -o cmTC_860c7
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:139 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WC11_EXTENSIONS_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-uehVMT"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-uehVMT"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WC11_EXTENSIONS_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-uehVMT'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_de695/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_de695.dir/build.make CMakeFiles/cmTC_de695.dir/build
+        Building C object CMakeFiles/cmTC_de695.dir/src.c.o
+        /usr/bin/cc -DIS_WC11_EXTENSIONS_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion  -arch arm64   -Wc11-extensions -MD -MT CMakeFiles/cmTC_de695.dir/src.c.o -MF CMakeFiles/cmTC_de695.dir/src.c.o.d -o CMakeFiles/cmTC_de695.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-uehVMT/src.c
+        Linking C executable cmTC_de695
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_de695.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_de695.dir/src.c.o -o cmTC_de695
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:140 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WC99_C11_COMPAT_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-DvNXIR"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-DvNXIR"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WC99_C11_COMPAT_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-DvNXIR'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_5c641/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_5c641.dir/build.make CMakeFiles/cmTC_5c641.dir/build
+        Building C object CMakeFiles/cmTC_5c641.dir/src.c.o
+        /usr/bin/cc -DIS_WC99_C11_COMPAT_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions  -arch arm64   -Wc99-c11-compat -MD -MT CMakeFiles/cmTC_5c641.dir/src.c.o -MF CMakeFiles/cmTC_5c641.dir/src.c.o.d -o CMakeFiles/cmTC_5c641.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-DvNXIR/src.c
+        warning: unknown warning option '-Wc99-c11-compat'; did you mean '-Wpre-c11-compat'? [-Wunknown-warning-option]
+        1 warning generated.
+        Linking C executable cmTC_5c641
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c641.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_5c641.dir/src.c.o -o cmTC_5c641
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:149 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WFORMAT_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7rvcSX"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7rvcSX"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WFORMAT_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7rvcSX'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_fc30f/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_fc30f.dir/build.make CMakeFiles/cmTC_fc30f.dir/build
+        Building C object CMakeFiles/cmTC_fc30f.dir/src.c.o
+        /usr/bin/cc -DIS_WFORMAT_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions  -arch arm64   -Wformat -MD -MT CMakeFiles/cmTC_fc30f.dir/src.c.o -MF CMakeFiles/cmTC_fc30f.dir/src.c.o.d -o CMakeFiles/cmTC_fc30f.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7rvcSX/src.c
+        Linking C executable cmTC_fc30f
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc30f.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_fc30f.dir/src.c.o -o cmTC_fc30f
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:2 (add_c_flag_if_supported)"
+      - "cmake/DefaultCFlags.cmake:150 (enable_warnings)"
+      - "CMakeLists.txt:100 (include)"
+    checks:
+      - "Performing Test IS_WFORMAT_SECURITY_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-KxcCMA"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-KxcCMA"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WFORMAT_SECURITY_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-KxcCMA'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_51928/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_51928.dir/build.make CMakeFiles/cmTC_51928.dir/build
+        Building C object CMakeFiles/cmTC_51928.dir/src.c.o
+        /usr/bin/cc -DIS_WFORMAT_SECURITY_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat  -arch arm64   -Wformat-security -MD -MT CMakeFiles/cmTC_51928.dir/src.c.o -MF CMakeFiles/cmTC_51928.dir/src.c.o.d -o CMakeFiles/cmTC_51928.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-KxcCMA/src.c
+        Linking C executable cmTC_51928
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51928.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_51928.dir/src.c.o -o cmTC_51928
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckLibraryExists.cmake:112 (try_compile)"
+      - "cmake/FindSecurity.cmake:18 (check_library_exists)"
+      - "cmake/SelectHTTPSBackend.cmake:8 (find_package)"
+      - "src/CMakeLists.txt:41 (include)"
+    checks:
+      - "Looking for SSLCreateContext in /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-09fCjU"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-09fCjU"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "SECURITY_HAS_SSLCREATECONTEXT"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-09fCjU'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_4997e/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_4997e.dir/build.make CMakeFiles/cmTC_4997e.dir/build
+        Building C object CMakeFiles/cmTC_4997e.dir/CheckFunctionExists.c.o
+        /usr/bin/cc  -F/Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=SSLCreateContext -arch arm64 -MD -MT CMakeFiles/cmTC_4997e.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_4997e.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_4997e.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-09fCjU/CheckFunctionExists.c
+        Linking C executable cmTC_4997e
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4997e.dir/link.txt --verbose=1
+        ld: warning: search path '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-09fCjU/Security/SecureTransport.h' not found
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=SSLCreateContext -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_4997e.dir/CheckFunctionExists.c.o -o cmTC_4997e   -L/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-09fCjU/Security/SecureTransport.h  -Wl,-rpath,/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-09fCjU/Security/SecureTransport.h -framework Security
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:5 (check_include_file)"
+    checks:
+      - "Looking for dirent.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ZB8q1p"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ZB8q1p"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_DIRENT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ZB8q1p'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_92db6/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_92db6.dir/build.make CMakeFiles/cmTC_92db6.dir/build
+        Building C object CMakeFiles/cmTC_92db6.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_92db6.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_92db6.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_92db6.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-ZB8q1p/CheckIncludeFile.c
+        Linking C executable cmTC_92db6
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92db6.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_92db6.dir/CheckIncludeFile.c.o -o cmTC_92db6
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:6 (check_include_file)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-tHFuI4"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-tHFuI4"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-tHFuI4'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_2a23f/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_2a23f.dir/build.make CMakeFiles/cmTC_2a23f.dir/build
+        Building C object CMakeFiles/cmTC_2a23f.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_2a23f.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_2a23f.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_2a23f.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-tHFuI4/CheckIncludeFile.c
+        Linking C executable cmTC_2a23f
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a23f.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_2a23f.dir/CheckIncludeFile.c.o -o cmTC_2a23f
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:7 (check_include_file)"
+    checks:
+      - "Looking for inttypes.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gpwkRT"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gpwkRT"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_INTTYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gpwkRT'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_3ca41/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_3ca41.dir/build.make CMakeFiles/cmTC_3ca41.dir/build
+        Building C object CMakeFiles/cmTC_3ca41.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_3ca41.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_3ca41.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_3ca41.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-gpwkRT/CheckIncludeFile.c
+        Linking C executable cmTC_3ca41
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ca41.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_3ca41.dir/CheckIncludeFile.c.o -o cmTC_3ca41
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:8 (check_include_file)"
+    checks:
+      - "Looking for sys/stat.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-3nNQdq"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-3nNQdq"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_SYS_STAT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-3nNQdq'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_e2a68/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_e2a68.dir/build.make CMakeFiles/cmTC_e2a68.dir/build
+        Building C object CMakeFiles/cmTC_e2a68.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_e2a68.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_e2a68.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_e2a68.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-3nNQdq/CheckIncludeFile.c
+        Linking C executable cmTC_e2a68
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2a68.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_e2a68.dir/CheckIncludeFile.c.o -o cmTC_e2a68
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:9 (check_include_file)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-h7T8x6"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-h7T8x6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-h7T8x6'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_a49b2/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_a49b2.dir/build.make CMakeFiles/cmTC_a49b2.dir/build
+        Building C object CMakeFiles/cmTC_a49b2.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_a49b2.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_a49b2.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_a49b2.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-h7T8x6/CheckIncludeFile.c
+        Linking C executable cmTC_a49b2
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a49b2.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_a49b2.dir/CheckIncludeFile.c.o -o cmTC_a49b2
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:10 (check_include_file)"
+    checks:
+      - "Looking for unistd.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-FRD3pc"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-FRD3pc"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_UNISTD_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-FRD3pc'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_70ce1/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_70ce1.dir/build.make CMakeFiles/cmTC_70ce1.dir/build
+        Building C object CMakeFiles/cmTC_70ce1.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_70ce1.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_70ce1.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_70ce1.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-FRD3pc/CheckIncludeFile.c
+        Linking C executable cmTC_70ce1
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70ce1.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_70ce1.dir/CheckIncludeFile.c.o -o cmTC_70ce1
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:11 (check_include_file)"
+    checks:
+      - "Looking for windows.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-EHUIt6"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-EHUIt6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_WINDOWS_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-EHUIt6'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_8fdfb/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_8fdfb.dir/build.make CMakeFiles/cmTC_8fdfb.dir/build
+        Building C object CMakeFiles/cmTC_8fdfb.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_8fdfb.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_8fdfb.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_8fdfb.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-EHUIt6/CheckIncludeFile.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-EHUIt6/CheckIncludeFile.c:1:10: fatal error: 'windows.h' file not found
+            1 | #include <windows.h>
+              |          ^~~~~~~~~~~
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_8fdfb.dir/CheckIncludeFile.c.o] Error 1
+        make: *** [cmTC_8fdfb/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:13 (check_function_exists)"
+    checks:
+      - "Looking for bcopy"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-63ETQ3"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-63ETQ3"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_BCOPY"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-63ETQ3'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_9ff55/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_9ff55.dir/build.make CMakeFiles/cmTC_9ff55.dir/build
+        Building C object CMakeFiles/cmTC_9ff55.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=bcopy -arch arm64 -MD -MT CMakeFiles/cmTC_9ff55.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_9ff55.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_9ff55.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-63ETQ3/CheckFunctionExists.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-63ETQ3/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'bcopy' [-Wincompatible-library-redeclaration]
+            7 |   CHECK_FUNCTION_EXISTS(void);
+              |   ^
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS bcopy
+              |                               ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-63ETQ3/CheckFunctionExists.c:7:3: note: 'bcopy' is a builtin with type 'void (const void *, void *, unsigned long)'
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS bcopy
+              |                               ^
+        1 warning generated.
+        Linking C executable cmTC_9ff55
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9ff55.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=bcopy -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_9ff55.dir/CheckFunctionExists.c.o -o cmTC_9ff55
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:14 (check_function_exists)"
+    checks:
+      - "Looking for memmove"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-6GuowA"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-6GuowA"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_MEMMOVE"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-6GuowA'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_e0d51/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_e0d51.dir/build.make CMakeFiles/cmTC_e0d51.dir/build
+        Building C object CMakeFiles/cmTC_e0d51.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=memmove -arch arm64 -MD -MT CMakeFiles/cmTC_e0d51.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_e0d51.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_e0d51.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-6GuowA/CheckFunctionExists.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-6GuowA/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'memmove' [-Wincompatible-library-redeclaration]
+            7 |   CHECK_FUNCTION_EXISTS(void);
+              |   ^
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS memmove
+              |                               ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-6GuowA/CheckFunctionExists.c:7:3: note: 'memmove' is a builtin with type 'void *(void *, const void *, unsigned long)'
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS memmove
+              |                               ^
+        1 warning generated.
+        Linking C executable cmTC_e0d51
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0d51.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=memmove -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_e0d51.dir/CheckFunctionExists.c.o -o cmTC_e0d51
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:15 (check_function_exists)"
+    checks:
+      - "Looking for strerror"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f5xoTE"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f5xoTE"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STRERROR"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f5xoTE'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_4bcf0/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_4bcf0.dir/build.make CMakeFiles/cmTC_4bcf0.dir/build
+        Building C object CMakeFiles/cmTC_4bcf0.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=strerror -arch arm64 -MD -MT CMakeFiles/cmTC_4bcf0.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_4bcf0.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_4bcf0.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f5xoTE/CheckFunctionExists.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f5xoTE/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'strerror' [-Wincompatible-library-redeclaration]
+            7 |   CHECK_FUNCTION_EXISTS(void);
+              |   ^
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS strerror
+              |                               ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-f5xoTE/CheckFunctionExists.c:7:3: note: 'strerror' is a builtin with type 'char *(int)'
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS strerror
+              |                               ^
+        1 warning generated.
+        Linking C executable cmTC_4bcf0
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4bcf0.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=strerror -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_4bcf0.dir/CheckFunctionExists.c.o -o cmTC_4bcf0
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:16 (check_function_exists)"
+    checks:
+      - "Looking for strtoll"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BBOQcO"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BBOQcO"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STRTOLL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BBOQcO'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_7711e/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_7711e.dir/build.make CMakeFiles/cmTC_7711e.dir/build
+        Building C object CMakeFiles/cmTC_7711e.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=strtoll -arch arm64 -MD -MT CMakeFiles/cmTC_7711e.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_7711e.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_7711e.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BBOQcO/CheckFunctionExists.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BBOQcO/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'strtoll' [-Wincompatible-library-redeclaration]
+            7 |   CHECK_FUNCTION_EXISTS(void);
+              |   ^
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS strtoll
+              |                               ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-BBOQcO/CheckFunctionExists.c:7:3: note: 'strtoll' is a builtin with type 'long long (const char *, char **, int)'
+        <command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+            2 | #define CHECK_FUNCTION_EXISTS strtoll
+              |                               ^
+        1 warning generated.
+        Linking C executable cmTC_7711e
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7711e.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=strtoll -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_7711e.dir/CheckFunctionExists.c.o -o cmTC_7711e
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:17 (check_function_exists)"
+    checks:
+      - "Looking for strtoq"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-T5mE6i"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-T5mE6i"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STRTOQ"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-T5mE6i'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_05a8f/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_05a8f.dir/build.make CMakeFiles/cmTC_05a8f.dir/build
+        Building C object CMakeFiles/cmTC_05a8f.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=strtoq -arch arm64 -MD -MT CMakeFiles/cmTC_05a8f.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_05a8f.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_05a8f.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-T5mE6i/CheckFunctionExists.c
+        Linking C executable cmTC_05a8f
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05a8f.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=strtoq -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_05a8f.dir/CheckFunctionExists.c.o -o cmTC_05a8f
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "deps/pcre/CMakeLists.txt:18 (check_function_exists)"
+    checks:
+      - "Looking for _strtoi64"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-VhuTIu"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-VhuTIu"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE__STRTOI64"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-VhuTIu'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_6c1da/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_6c1da.dir/build.make CMakeFiles/cmTC_6c1da.dir/build
+        Building C object CMakeFiles/cmTC_6c1da.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=_strtoi64 -arch arm64 -MD -MT CMakeFiles/cmTC_6c1da.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_6c1da.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_6c1da.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-VhuTIu/CheckFunctionExists.c
+        Linking C executable cmTC_6c1da
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6c1da.dir/link.txt --verbose=1
+        Undefined symbols for architecture arm64:
+          "__strtoi64", referenced from:
+              _main in CheckFunctionExists.c.o
+        ld: symbol(s) not found for architecture arm64
+        clang: error: linker command failed with exit code 1 (use -v to see invocation)
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=_strtoi64 -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_6c1da.dir/CheckFunctionExists.c.o -o cmTC_6c1da
+        make[1]: *** [cmTC_6c1da] Error 1
+        make: *** [cmTC_6c1da/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckTypeSize.cmake:320 (check_include_file)"
+      - "deps/pcre/CMakeLists.txt:20 (check_type_size)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-sFrVbF"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-sFrVbF"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-sFrVbF'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_857df/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_857df.dir/build.make CMakeFiles/cmTC_857df.dir/build
+        Building C object CMakeFiles/cmTC_857df.dir/CheckIncludeFile.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_857df.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_857df.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_857df.dir/CheckIncludeFile.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-sFrVbF/CheckIncludeFile.c
+        Linking C executable cmTC_857df
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_857df.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_857df.dir/CheckIncludeFile.c.o -o cmTC_857df
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckTypeSize.cmake:212 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckTypeSize.cmake:339 (__check_type_size_impl)"
+      - "deps/pcre/CMakeLists.txt:20 (check_type_size)"
+    checks:
+      - "Check size of long long"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-kLssi9"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-kLssi9"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_LONG_LONG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-kLssi9'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_1691a/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_1691a.dir/build.make CMakeFiles/cmTC_1691a.dir/build
+        Building C object CMakeFiles/cmTC_1691a.dir/LONG_LONG.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_1691a.dir/LONG_LONG.c.o -MF CMakeFiles/cmTC_1691a.dir/LONG_LONG.c.o.d -o CMakeFiles/cmTC_1691a.dir/LONG_LONG.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-kLssi9/LONG_LONG.c
+        Linking C executable cmTC_1691a
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1691a.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_1691a.dir/LONG_LONG.c.o -o cmTC_1691a
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckTypeSize.cmake:212 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckTypeSize.cmake:339 (__check_type_size_impl)"
+      - "deps/pcre/CMakeLists.txt:21 (check_type_size)"
+    checks:
+      - "Check size of unsigned long long"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7UeYUG"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7UeYUG"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "HAVE_UNSIGNED_LONG_LONG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7UeYUG'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_01c7d/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_01c7d.dir/build.make CMakeFiles/cmTC_01c7d.dir/build
+        Building C object CMakeFiles/cmTC_01c7d.dir/UNSIGNED_LONG_LONG.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_01c7d.dir/UNSIGNED_LONG_LONG.c.o -MF CMakeFiles/cmTC_01c7d.dir/UNSIGNED_LONG_LONG.c.o.d -o CMakeFiles/cmTC_01c7d.dir/UNSIGNED_LONG_LONG.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-7UeYUG/UNSIGNED_LONG_LONG.c
+        Linking C executable cmTC_01c7d
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_01c7d.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_01c7d.dir/UNSIGNED_LONG_LONG.c.o -o cmTC_01c7d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:6 (add_c_flag_if_supported)"
+      - "deps/pcre/CMakeLists.txt:23 (disable_warnings)"
+    checks:
+      - "Performing Test IS_WNO_UNUSED_FUNCTION_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-cuBMcY"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-cuBMcY"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WNO_UNUSED_FUNCTION_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-cuBMcY'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_9b7c4/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_9b7c4.dir/build.make CMakeFiles/cmTC_9b7c4.dir/build
+        Building C object CMakeFiles/cmTC_9b7c4.dir/src.c.o
+        /usr/bin/cc -DIS_WNO_UNUSED_FUNCTION_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64   -Wno-unused-function -MD -MT CMakeFiles/cmTC_9b7c4.dir/src.c.o -MF CMakeFiles/cmTC_9b7c4.dir/src.c.o.d -o CMakeFiles/cmTC_9b7c4.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-cuBMcY/src.c
+        Linking C executable cmTC_9b7c4
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9b7c4.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_9b7c4.dir/src.c.o -o cmTC_9b7c4
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:6 (add_c_flag_if_supported)"
+      - "deps/pcre/CMakeLists.txt:24 (disable_warnings)"
+    checks:
+      - "Performing Test IS_WNO_IMPLICIT_FALLTHROUGH_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hkIxEj"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hkIxEj"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WNO_IMPLICIT_FALLTHROUGH_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hkIxEj'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_70d1c/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_70d1c.dir/build.make CMakeFiles/cmTC_70d1c.dir/build
+        Building C object CMakeFiles/cmTC_70d1c.dir/src.c.o
+        /usr/bin/cc -DIS_WNO_IMPLICIT_FALLTHROUGH_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function  -arch arm64   -Wno-implicit-fallthrough -MD -MT CMakeFiles/cmTC_70d1c.dir/src.c.o -MF CMakeFiles/cmTC_70d1c.dir/src.c.o.d -o CMakeFiles/cmTC_70d1c.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-hkIxEj/src.c
+        Linking C executable cmTC_70d1c
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70d1c.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_70d1c.dir/src.c.o -o cmTC_70d1c
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:6 (add_c_flag_if_supported)"
+      - "deps/pcre/CMakeLists.txt:25 (disable_warnings)"
+    checks:
+      - "Performing Test IS_WNO_UNUSED_BUT_SET_VARIABLE_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-goC13L"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-goC13L"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-implicit-fallthrough"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WNO_UNUSED_BUT_SET_VARIABLE_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-goC13L'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_49bda/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_49bda.dir/build.make CMakeFiles/cmTC_49bda.dir/build
+        Building C object CMakeFiles/cmTC_49bda.dir/src.c.o
+        /usr/bin/cc -DIS_WNO_UNUSED_BUT_SET_VARIABLE_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-implicit-fallthrough  -arch arm64   -Wno-unused-but-set-variable -MD -MT CMakeFiles/cmTC_49bda.dir/src.c.o -MF CMakeFiles/cmTC_49bda.dir/src.c.o.d -o CMakeFiles/cmTC_49bda.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-goC13L/src.c
+        Linking C executable cmTC_49bda
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49bda.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-implicit-fallthrough  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_49bda.dir/src.c.o -o cmTC_49bda
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "cmake/FindIntlIconv.cmake:15 (check_function_exists)"
+      - "cmake/SelectI18n.cmake:3 (find_package)"
+      - "src/CMakeLists.txt:48 (include)"
+    checks:
+      - "Looking for iconv_open"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-PX1GeK"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-PX1GeK"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "libc_has_iconv"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-PX1GeK'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_6f419/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_6f419.dir/build.make CMakeFiles/cmTC_6f419.dir/build
+        Building C object CMakeFiles/cmTC_6f419.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=iconv_open -arch arm64 -MD -MT CMakeFiles/cmTC_6f419.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_6f419.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_6f419.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-PX1GeK/CheckFunctionExists.c
+        Linking C executable cmTC_6f419
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6f419.dir/link.txt --verbose=1
+        Undefined symbols for architecture arm64:
+          "_iconv_open", referenced from:
+              _main in CheckFunctionExists.c.o
+        ld: symbol(s) not found for architecture arm64
+        clang: error: linker command failed with exit code 1 (use -v to see invocation)
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=iconv_open -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_6f419.dir/CheckFunctionExists.c.o -o cmTC_6f419
+        make[1]: *** [cmTC_6f419] Error 1
+        make: *** [cmTC_6f419/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "cmake/AddCFlagIfSupported.cmake:25 (check_c_compiler_flag)"
+      - "cmake/EnableWarnings.cmake:6 (add_c_flag_if_supported)"
+      - "cmake/CheckPrototypeDefinitionSafe.cmake:10 (disable_warnings)"
+      - "src/CMakeLists.txt:66 (check_prototype_definition_safe)"
+    checks:
+      - "Performing Test IS_WNO_UNUSED_PARAMETER_SUPPORTED"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UDesqV"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UDesqV"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "IS_WNO_UNUSED_PARAMETER_SUPPORTED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UDesqV'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_f6431/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_f6431.dir/build.make CMakeFiles/cmTC_f6431.dir/build
+        Building C object CMakeFiles/cmTC_f6431.dir/src.c.o
+        /usr/bin/cc -DIS_WNO_UNUSED_PARAMETER_SUPPORTED  -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function  -arch arm64   -Wno-unused-parameter -MD -MT CMakeFiles/cmTC_f6431.dir/src.c.o -MF CMakeFiles/cmTC_f6431.dir/src.c.o.d -o CMakeFiles/cmTC_f6431.dir/src.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-UDesqV/src.c
+        Linking C executable cmTC_f6431
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f6431.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_f6431.dir/src.c.o -o cmTC_f6431
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckPrototypeDefinition.cmake:133 (try_compile)"
+      - "cmake/CheckPrototypeDefinitionSafe.cmake:12 (check_prototype_definition)"
+      - "src/CMakeLists.txt:66 (check_prototype_definition_safe)"
+    checks:
+      - "Checking prototype qsort_r for GIT_QSORT_BSD"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-U0cQWN"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-U0cQWN"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_QSORT_BSD"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-U0cQWN'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_55e5d/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_55e5d.dir/build.make CMakeFiles/cmTC_55e5d.dir/build
+        Building C object CMakeFiles/cmTC_55e5d.dir/CheckPrototypeDefinition.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter  -arch arm64 -MD -MT CMakeFiles/cmTC_55e5d.dir/CheckPrototypeDefinition.c.o -MF CMakeFiles/cmTC_55e5d.dir/CheckPrototypeDefinition.c.o.d -o CMakeFiles/cmTC_55e5d.dir/CheckPrototypeDefinition.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-U0cQWN/CheckPrototypeDefinition.c
+        Linking C executable cmTC_55e5d
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55e5d.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_55e5d.dir/CheckPrototypeDefinition.c.o -o cmTC_55e5d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckPrototypeDefinition.cmake:133 (try_compile)"
+      - "cmake/CheckPrototypeDefinitionSafe.cmake:12 (check_prototype_definition)"
+      - "src/CMakeLists.txt:72 (check_prototype_definition_safe)"
+    checks:
+      - "Checking prototype qsort_r for GIT_QSORT_GNU"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HHqBES"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HHqBES"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_QSORT_GNU"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HHqBES'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_fdb03/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_fdb03.dir/build.make CMakeFiles/cmTC_fdb03.dir/build
+        Building C object CMakeFiles/cmTC_fdb03.dir/CheckPrototypeDefinition.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter  -arch arm64 -MD -MT CMakeFiles/cmTC_fdb03.dir/CheckPrototypeDefinition.c.o -MF CMakeFiles/cmTC_fdb03.dir/CheckPrototypeDefinition.c.o.d -o CMakeFiles/cmTC_fdb03.dir/CheckPrototypeDefinition.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HHqBES/CheckPrototypeDefinition.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-HHqBES/CheckPrototypeDefinition.c:14:7: error: conflicting types for 'qsort_r'
+           14 | void (qsort_r)(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *, void *), void *context) {
+              |       ^
+        /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdlib.h:371:7: note: previous declaration is here
+          371 | void     qsort_r(void *_LIBC_SIZE(__nel * __width) __base, size_t __nel, size_t __width, void *,
+              |          ^
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_fdb03.dir/CheckPrototypeDefinition.c.o] Error 1
+        make: *** [cmTC_fdb03/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckPrototypeDefinition.cmake:133 (try_compile)"
+      - "cmake/CheckPrototypeDefinitionSafe.cmake:12 (check_prototype_definition)"
+      - "src/CMakeLists.txt:78 (check_prototype_definition_safe)"
+    checks:
+      - "Checking prototype qsort_s for GIT_QSORT_C11"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_QSORT_C11"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_059d8/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_059d8.dir/build.make CMakeFiles/cmTC_059d8.dir/build
+        Building C object CMakeFiles/cmTC_059d8.dir/CheckPrototypeDefinition.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter  -arch arm64 -MD -MT CMakeFiles/cmTC_059d8.dir/CheckPrototypeDefinition.c.o -MF CMakeFiles/cmTC_059d8.dir/CheckPrototypeDefinition.c.o.d -o CMakeFiles/cmTC_059d8.dir/CheckPrototypeDefinition.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c:10:26: error: use of undeclared identifier 'qsort_s'
+           10 |   cmakeRequireSymbol(0, &qsort_s);
+              |                          ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c:14:31: error: unknown type name 'rsize_t'; did you mean 'size_t'?
+           14 | errno_t (qsort_s)(void *base, rsize_t nmemb, rsize_t size, int (*compar)(const void *, const void *, void *), void *context) {
+              |                               ^~~~~~~
+              |                               size_t
+        /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h:50:32: note: 'size_t' declared here
+           50 | typedef __darwin_size_t        size_t;
+              |                                ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c:14:46: error: unknown type name 'rsize_t'; did you mean 'size_t'?
+           14 | errno_t (qsort_s)(void *base, rsize_t nmemb, rsize_t size, int (*compar)(const void *, const void *, void *), void *context) {
+              |                                              ^~~~~~~
+              |                                              size_t
+        /Applications/Xcode-26.0.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h:50:32: note: 'size_t' declared here
+           50 | typedef __darwin_size_t        size_t;
+              |                                ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c:14:10: error: parameter 'qsort_s' was not declared, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+           14 | errno_t (qsort_s)(void *base, rsize_t nmemb, rsize_t size, int (*compar)(const void *, const void *, void *), void *context) {
+              |          ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c:14:1: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+           14 | errno_t (qsort_s)(void *base, rsize_t nmemb, rsize_t size, int (*compar)(const void *, const void *, void *), void *context) {
+              | ^
+              | int
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c:14:9: error: function cannot return function type 'int (void *, size_t, size_t, int (*)(const void *, const void *, void *), void *)' (aka 'int (void *, unsigned long, unsigned long, int (*)(const void *, const void *, void *), void *)')
+           14 | errno_t (qsort_s)(void *base, rsize_t nmemb, rsize_t size, int (*compar)(const void *, const void *, void *), void *context) {
+              |         ^
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-bQXYFQ/CheckPrototypeDefinition.c:14:1: warning: a function definition without a prototype is deprecated in all versions of C and is not supported in C23 [-Wdeprecated-non-prototype]
+           14 | errno_t (qsort_s)(void *base, rsize_t nmemb, rsize_t size, int (*compar)(const void *, const void *, void *), void *context) {
+              | ^
+        1 warning and 6 errors generated.
+        make[1]: *** [CMakeFiles/cmTC_059d8.dir/CheckPrototypeDefinition.c.o] Error 1
+        make: *** [cmTC_059d8/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckPrototypeDefinition.cmake:133 (try_compile)"
+      - "cmake/CheckPrototypeDefinitionSafe.cmake:12 (check_prototype_definition)"
+      - "src/CMakeLists.txt:84 (check_prototype_definition_safe)"
+    checks:
+      - "Checking prototype qsort_s for GIT_QSORT_MSC"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-IKzjTv"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-IKzjTv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_QSORT_MSC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-IKzjTv'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_af915/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_af915.dir/build.make CMakeFiles/cmTC_af915.dir/build
+        Building C object CMakeFiles/cmTC_af915.dir/CheckPrototypeDefinition.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter  -arch arm64 -MD -MT CMakeFiles/cmTC_af915.dir/CheckPrototypeDefinition.c.o -MF CMakeFiles/cmTC_af915.dir/CheckPrototypeDefinition.c.o.d -o CMakeFiles/cmTC_af915.dir/CheckPrototypeDefinition.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-IKzjTv/CheckPrototypeDefinition.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-IKzjTv/CheckPrototypeDefinition.c:10:26: error: use of undeclared identifier 'qsort_s'
+           10 |   cmakeRequireSymbol(0, &qsort_s);
+              |                          ^
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_af915.dir/CheckPrototypeDefinition.c.o] Error 1
+        make: *** [cmTC_af915/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:160 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:65 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "src/CMakeLists.txt:90 (check_symbol_exists)"
+    checks:
+      - "Looking for getentropy"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-8BezRv"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-8BezRv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_RAND_GETENTROPY"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-8BezRv'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_5aa71/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_5aa71.dir/build.make CMakeFiles/cmTC_5aa71.dir/build
+        Building C object CMakeFiles/cmTC_5aa71.dir/CheckSymbolExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_5aa71.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_5aa71.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_5aa71.dir/CheckSymbolExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-8BezRv/CheckSymbolExists.c
+        /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-8BezRv/CheckSymbolExists.c:8:19: error: use of undeclared identifier 'getentropy'
+            8 |   return ((int*)(&getentropy))[argc];
+              |                   ^
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_5aa71.dir/CheckSymbolExists.c.o] Error 1
+        make: *** [cmTC_5aa71/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:160 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:65 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "src/CMakeLists.txt:91 (check_symbol_exists)"
+    checks:
+      - "Looking for getloadavg"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XvMuvy"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XvMuvy"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_RAND_GETLOADAVG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XvMuvy'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_337e5/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_337e5.dir/build.make CMakeFiles/cmTC_337e5.dir/build
+        Building C object CMakeFiles/cmTC_337e5.dir/CheckSymbolExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_337e5.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_337e5.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_337e5.dir/CheckSymbolExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-XvMuvy/CheckSymbolExists.c
+        Linking C executable cmTC_337e5
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_337e5.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_337e5.dir/CheckSymbolExists.c.o -o cmTC_337e5
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:160 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:65 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "src/CMakeLists.txt:98 (check_symbol_exists)"
+    checks:
+      - "Looking for poll"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-LqJ06h"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-LqJ06h"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_IO_POLL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-LqJ06h'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_9f14d/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_9f14d.dir/build.make CMakeFiles/cmTC_9f14d.dir/build
+        Building C object CMakeFiles/cmTC_9f14d.dir/CheckSymbolExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_9f14d.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_9f14d.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_9f14d.dir/CheckSymbolExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-LqJ06h/CheckSymbolExists.c
+        Linking C executable cmTC_9f14d
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9f14d.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_9f14d.dir/CheckSymbolExists.c.o -o cmTC_9f14d
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:160 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckSymbolExists.cmake:65 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "src/CMakeLists.txt:99 (check_symbol_exists)"
+    checks:
+      - "Looking for select"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-wYtSkU"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-wYtSkU"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "GIT_IO_SELECT"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-wYtSkU'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_ad537/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_ad537.dir/build.make CMakeFiles/cmTC_ad537.dir/build
+        Building C object CMakeFiles/cmTC_ad537.dir/CheckSymbolExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -MD -MT CMakeFiles/cmTC_ad537.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_ad537.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_ad537.dir/CheckSymbolExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-wYtSkU/CheckSymbolExists.c
+        Linking C executable cmTC_ad537
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad537.dir/link.txt --verbose=1
+        /usr/bin/cc -D_GNU_SOURCE  -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_ad537.dir/CheckSymbolExists.c.o -o cmTC_ad537
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CheckLibraryExists.cmake:112 (try_compile)"
+      - "src/CMakeLists.txt:116 (check_library_exists)"
+    checks:
+      - "Looking for clock_gettime in rt"
+    directories:
+      source: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-Ozbdfc"
+      binary: "/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-Ozbdfc"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/manuelmaly/Dev/ai/git-jenga/deps/libgit2/cmake"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "NEED_LIBRT"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-Ozbdfc'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_7f012/fast
+        /Applications/Xcode-26.0.1.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_7f012.dir/build.make CMakeFiles/cmTC_7f012.dir/build
+        Building C object CMakeFiles/cmTC_7f012.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=clock_gettime -arch arm64 -MD -MT CMakeFiles/cmTC_7f012.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_7f012.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_7f012.dir/CheckFunctionExists.c.o -c /Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-Ozbdfc/CheckFunctionExists.c
+        Linking C executable cmTC_7f012
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7f012.dir/link.txt --verbose=1
+        ld: warning: search path '/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-Ozbdfc/time.h' not found
+        ld: library 'rt' not found
+        clang: error: linker command failed with exit code 1 (use -v to see invocation)
+        /usr/bin/cc -D_GNU_SOURCE  -Werror -Wno-error -Wall -Wextra -Wdocumentation -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc11-extensions -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=clock_gettime -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_7f012.dir/CheckFunctionExists.c.o -o cmTC_7f012   -L/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-Ozbdfc/time.h  -Wl,-rpath,/Users/manuelmaly/Dev/ai/git-jenga/zig-cache/libgit2/CMakeFiles/CMakeScratch/TryCompile-Ozbdfc/time.h -lrt
+        make[1]: *** [cmTC_7f012] Error 1
+        make: *** [cmTC_7f012/fast] Error 2
+        
+      exitCode: 2
+...
